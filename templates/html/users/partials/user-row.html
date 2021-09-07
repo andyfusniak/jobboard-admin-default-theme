@@ -1,0 +1,11 @@
+{{define "user-row"}}
+<h2>USER ROW</h2>
+<tr>
+  <td><a href="/users/{{.User.ID}}">{{.User.ID}}</a></td>
+  <td>{{.User.Email}}</td>
+  <td>{{.User.Role}}</td>
+  <td>{{.User.Metadata}}</td>
+  <td>{{admintime .User.CreatedAt}}</td>
+  <td>{{admintime .User.ModifiedAt}}</td>
+</tr>
+{{end}}

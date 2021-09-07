@@ -1,0 +1,23 @@
+{{define "job-row"}}
+<tr>
+  <td><a href="/jobs/{{.Job.ID}}">{{.Job.ID}}<a></td>
+  <td>
+    {{- if .Job.Visible}}V{{else}}v{{end}}
+    {{- if .Job.Searchable}}S{{else}}s{{end}}
+    {{- if .Job.Pinned}}P{{else}}p{{end}}
+    {{- if .Job.Filled}}F{{else}}f{{end}}
+  </td>
+  <td>{{.Job.UserID}}</td>
+  <td>{{.Job.JobSourceID}}</td>
+  <td>{{.Job.CompanyName}}</td>
+  <td>{{.Job.Location}}</td>
+  <td>{{.Job.Title}}</td>
+  <td>{{currencySymbol .Job.SalaryCurrency}}{{moneyK .Job.SalaryMin}}</td>
+  <td>{{moneyK .Job.SalaryMax}}</td>
+  <td>{{.Job.SalaryUnit}}</td>
+  <td>{{.Job.HLType}}</td>
+  <td>{{.Job.HLCol}}</td>
+  <td><a target="_blank" href="{{$.Site.BaseURL}}/jobs/{{.Job.Slug}}">VIEW</a></td>
+  <td></td>
+</tr>
+{{end}}

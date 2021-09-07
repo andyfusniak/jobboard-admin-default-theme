@@ -1,0 +1,26 @@
+{{- define "title"}}Jobs List{{ end }}
+{{- define "content"}}
+<h1>job list</h1>
+
+Viewing {{.Data.JobsTotalCount}} jobs.
+<table>
+<tr>
+  <th>ID</th>
+  <th>VSPF</th>
+  <th>User ID</th>
+  <th>Source ID</th>
+  <th>Company Name</th>
+  <th>Location</th>
+  <th>Title</th>
+  <th>Min</th>
+  <th>Max</th>
+  <th>Unit</th>
+  <th>HLType</th>
+  <th>HLCol</th>
+</tr>
+{{- range .Data.Jobs}}
+{{- template "job-row" dict "Site" $.Site "Job" .}}
+{{- end}}
+</table>
+
+{{- end -}}

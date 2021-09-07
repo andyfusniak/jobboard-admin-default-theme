@@ -1,0 +1,195 @@
+{{- define "title"}}View Job{{end}}
+{{- define "content"}}
+<h1>view job</h1>
+
+{{- with .Data.Job}}
+<table>
+<tr>
+  <td>ID</td>
+  <td>{{.ID}}</td>
+</tr>
+<tr>
+  <td>User ID</td>
+  <td><a href="/users/{{.UserID}}">{{.UserID}}</a></td>
+</tr>
+<tr>
+  <td>Job Source ID</td>
+  <td>{{.JobSourceID}}</td>
+</tr>
+<tr>
+  <td>Visible</td>
+  <td>{{.Visible}}</td>
+</tr>
+<tr>
+  <td>Searchable</td>
+  <td>{{.Searchable}}</td>
+</tr>
+<tr>
+  <td>Pinned</td>
+  <td>{{.Pinned}}</td>
+</tr>
+<tr>
+  <td>Filled</td>
+  <td>{{.Filled}}</td>
+</tr>
+<tr>
+  <td>Highlighted</td>
+  <td>{{.HLType}}</td>
+</tr>
+<tr>
+  <td>HL Col</td>
+  <td>{{.HLCol}}</td>
+</tr>
+<tr>
+  <td>Slug</td>
+  <td>{{.Slug}}</td>
+</tr>
+<tr>
+  <td>Title</td>
+  <td>{{.Title}}</td>
+</tr>
+<tr>
+  <td>Location</td>
+  <td>{{.Location}}</td>
+</tr>
+<tr>
+  <td>CompanyName</td>
+  <td>{{.CompanyName}}</td>
+</tr>
+<tr>
+  <td>Salary</td>
+  <td>&#163;{{moneyK .SalaryMin}} - &#163;{{moneyK .SalaryMax}} {{.SalaryCurrency}} {{.SalaryUnit}}</td>
+</tr>
+<tr>
+  <td>Logo URL</td>
+  <td><img src="{{$.Site.BaseURL}}/{{.LogoURL}}"></td>
+</tr>
+<tr>
+  <td>EmpType</td>
+  <td>{{.EmpType}}</td>
+</tr>
+<tr>
+  <td>Remote</td>
+  <td>{{.Remote}}</td>
+</tr>
+<tr>
+  <td>Skills</td>
+  <td>{{.SkillsContainer.Raw}}</td>
+</tr>
+<tr>
+  <td>Apply URL</td>
+  <td>{{.ApplyURL}}</td>
+</tr>
+<tr>
+  <td>Description</td>
+  <td><textarea rows="10" cols="80" readonly>{{.Description}}</textarea></td>
+</tr>
+<tr>
+  <td>Created</td>
+  <td>{{admintime .CreatedAt}}</td>
+</tr>
+<tr>
+  <td>Last Modified</td>
+  <td>{{admintime .ModifiedAt}}</td>
+</tr>
+</table>
+
+<h2>Payment Intents</h2>
+{{- range $.Data.PaymentIntents}}
+<table>
+<tr>
+  <td>ID</td>
+  <td>{{.ID}}</td>
+<tr>
+<tr>
+  <td>Job ID</td>
+  <td>{{.JobID}}</td>
+<tr>
+<tr>
+  <td>Status</td>
+  <td>{{.Status}}</td>
+<tr>
+<tr>
+  <td>HLType</td>
+  <td>{{.HLType}}</td>
+<tr>
+<tr>
+  <td>HLCol</td>
+  <td>{{.HLCol}}</td>
+<tr>
+<tr>
+  <td>Pinned days</td>
+  <td>{{.PinnedDays}}</td>
+<tr>
+<tr>
+  <td>Logo</td>
+  <td>{{.Logo}}</td>
+<tr>
+<tr>
+  <td>Job Schedule ID</td>
+  <td>{{.JobScheduleID}}</td>
+<tr>
+<tr>
+  <td>Created</td>
+  <td>{{admintime .CreatedAt}}</td>
+<tr>
+<tr>
+  <td>Last Modified</td>
+  <td>{{admintime .ModifiedAt}}</td>
+<tr>
+</table>
+<hr>
+{{- end}}
+<h2>Schedule</h2>
+{{- range $.Data.JobSchedules}}
+<table>
+<tr>
+  <td>ID</td>
+  <td>{{.ID}}</td>
+</tr>
+<tr>
+  <td>JobID</td>
+  <td>{{.JobID}}</td>
+</tr>
+<tr>
+  <td>StartAt</td>
+  <td>{{admintime .StartAt}}</td>
+</tr>
+<tr>
+  <td>EndAt</td>
+  <td>{{admintime .EndAt}}</td>
+</tr>
+<tr>
+  <td>Active</td>
+  <td>{{.Active}}</td>
+</tr>
+<tr>
+  <td>HLType</td>
+  <td>{{.HLType}}</td>
+<tr>
+<tr>
+  <td>HLCol</td>
+  <td>{{.HLCol}}</td>
+<tr>
+<tr>
+  <td>Pinned days</td>
+  <td>{{.PinnedDays}}</td>
+<tr>
+<tr>
+  <td>Logo</td>
+  <td>{{.Logo}}</td>
+<tr>
+<tr>
+  <td>Created</td>
+  <td>{{admintime .CreatedAt}}</td>
+<tr>
+<tr>
+  <td>Last Modified</td>
+  <td>{{admintime .ModifiedAt}}</td>
+<tr>
+</table>
+<hr>
+{{- end}}
+
+{{- end}}
+{{- end}}

@@ -1,0 +1,22 @@
+{{- define "title"}}View User{{end}}
+{{- define "content"}}
+<h1>view user</h1>
+
+{{- with .Data.User}}
+<table>
+<tr>
+  <td>ID</td>
+  <td>{{.ID}}</td>
+</tr>
+<tr>
+  <td>Created</td>
+  <td>{{admintime .CreatedAt}}</td>
+</tr>
+<tr>
+  <td>Last Modified</td>
+  <td>{{admintime .ModifiedAt}}</td>
+</tr>
+</table>
+{{- end}}
+
+{{- end}}

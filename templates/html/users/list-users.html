@@ -1,0 +1,21 @@
+{{- define "title"}}User List{{ end }}
+{{- define "content"}}
+<h1>user list</h1>
+
+Viewing {{.Data.UsersTotalCount}} users.
+
+<table>
+<tr>
+  <th>ID</th>
+  <th>Email</th>
+  <th>Role</th>
+  <th>Metadata</th>
+  <th>Created</th>
+  <th>Last Modified</th>
+</tr>
+{{- range .Data.Users}}
+{{- template "user-row" dict "Site" $.Site "User" .}}
+{{- end -}}
+</table>
+
+{{- end -}}
