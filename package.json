@@ -1,0 +1,25 @@
+{
+  "name": "jobboard-admin-default-theme",
+  "version": "0.0.1",
+  "description": "Jobboard admin control panel",
+  "scripts": {
+    "clean": "rimraf public",
+    "setup": "mkdir -p public/css && cp -r src/assets/* public/",
+    "tw:onchange": "npm run setup && onchange 'tailwind.config.js' 'src/**/*.css' 'templates/**/*.html' -- npm run tw:build",
+    "tw:build": "npm run setup && postcss ./src/css/tailwind.css -o ./public/css/tailwind.css",
+    "tw:prod": "npm run setup && NODE_ENV=production postcss ./src/css/tailwind.css -o ./public/css/tailwind.css"
+  },
+  "author": "Namwa Sawasdiworn",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.3",
+    "cssnano": "^5.0.8"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.4",
+    "onchange": "^7.1.0",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^2.2.12"
+  }
+}
