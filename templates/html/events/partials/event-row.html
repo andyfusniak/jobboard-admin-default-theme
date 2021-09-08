@@ -1,0 +1,10 @@
+{{- define "event-row"}}
+<tr>
+  <td>{{.Message}}</td>
+  <td>{{.Name}}</td>
+  <td>{{.ID}}</td>
+  <td>{{.UserID}}</td>
+  <td>{{ maptojsonstr .Data}}</td>
+  <td>{{ admintime .CreatedAt}}
+</tr>
+{{- end}}

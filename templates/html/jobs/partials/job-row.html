@@ -1,4 +1,4 @@
-{{define "job-row"}}
+{{- define "job-row"}}
 <tr>
   <td><a href="/jobs/{{.Job.ID}}">{{.Job.ID}}<a></td>
   <td>
@@ -20,4 +20,4 @@
   <td><a target="_blank" href="{{$.Site.BaseURL}}/jobs/{{.Job.Slug}}">VIEW</a></td>
   <td></td>
 </tr>
-{{end}}
+{{- end}}

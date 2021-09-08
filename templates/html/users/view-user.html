@@ -9,6 +9,18 @@
   <td>{{.ID}}</td>
 </tr>
 <tr>
+  <td>Email</td>
+  <td>{{.Email}}</td>
+</tr>
+<tr>
+  <td>Role</td>
+  <td>{{.Role}}</td>
+</tr>
+<tr>
+  <td>Metadata</td>
+  <td>{{.Metadata}}</td>
+</tr>
+<tr>
   <td>Created</td>
   <td>{{admintime .CreatedAt}}</td>
 </tr>
@@ -18,5 +30,19 @@
 </tr>
 </table>
 {{- end}}
+
+<h2>Jobs</h2>
+<table>
+{{- range .Data.Jobs}}
+{{- template "user-job-row" dict "Site" $.Site "Job" .}}
+{{- end}}
+</table>
+
+<h2>Events</h2>
+<table>
+{{- range .Data.Events}}
+{{- template "user-event-row" .}}
+{{- end}}
+</table>
 
 {{- end}}

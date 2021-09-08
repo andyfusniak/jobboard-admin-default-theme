@@ -1,0 +1,18 @@
+{{- define "title"}}Events{{ end }}
+{{- define "content"}}
+
+<table>
+<tr>
+  <th>Message</th>
+  <th>Name</th>
+  <th>ID</th>
+  <th>User ID</th>
+  <th>Event Data</th>
+  <th>Date</th>
+</tr>
+{{- range .Data.Events}}
+{{- template "event-row" .}}
+{{- end -}}
+</table>
+
+{{- end -}}

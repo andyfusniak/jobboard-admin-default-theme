@@ -1,0 +1,8 @@
+{{- define "user-event-row"}}
+<tr>
+  <td>{{.ID}}</td>
+  <td>{{.Name}}</td>
+  <td>{{.Message}}</td>
+  <td>{{ admintime .CreatedAt}}</td>
+</tr>
+{{- end}}
