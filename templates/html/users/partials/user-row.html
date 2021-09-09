@@ -1,11 +1,22 @@
 {{define "user-row"}}
-<h2>USER ROW</h2>
-<tr>
-  <td><a href="/users/{{.User.ID}}">{{.User.ID}}</a></td>
-  <td>{{.User.Email}}</td>
-  <td>{{.User.Role}}</td>
-  <td>{{.User.Metadata}}</td>
-  <td>{{admintime .User.CreatedAt}}</td>
-  <td>{{admintime .User.ModifiedAt}}</td>
-</tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="text-sm tracking-tight bg-gray-100 border border-gray-300 px-1 rounded">
+    <a href="/users/{{.User.ID}}">{{.User.ID}}</a>
+  </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.User.Email}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.User.Role}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.User.Metadata}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{admintime .User.CreatedAt}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{admintime .User.ModifiedAt}}</span>
+</td>
 {{end}}
