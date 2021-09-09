@@ -1,3 +1,14 @@
 {{define "payment-row"}}
-{{- printf "%#v" .}}
+<tr>
+  <td><a href="/payments/{{.ID}}">view</a></td>
+  <td>{{.JobID}}</td>
+  <td>{{.Status}}</td>
+  <td>{{.HLType}}</td>
+  <td>{{.HLCol}}</td>
+  <td>{{.PinnedDays}}</td>
+  <td>{{.Logo}}</td>
+  <td>{{.JobScheduleID}}</td>
+  <td>{{.CreatedAt}}</td>
+  <td>{{.ModifiedAt}}</td>
+<tr>
 {{- end}}

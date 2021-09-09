@@ -1,0 +1,41 @@
+{{- define "title"}}Payment{{end}}
+{{- define "content"}}
+
+<h1>Schedule</h1>
+{{- with .Data.PaymentIntent}}
+<table>
+<tr>
+  <td>ID</td>
+  <td>pi_{{.ID}}</td>
+</tr>
+  <td>Job ID</td>
+  <td><a href="jobs/{{.JobID}}">jb_{{.JobID}}</a></td>
+</tr>
+  <td>Status</td>
+  <td>{{.Status}}</td>
+</tr>
+  <td>Highlight type</td>
+  <td>{{.HLType}}</td>
+</tr>
+  <td>Highlight colour</td>
+  <td>{{.HLCol}}</td>
+</tr>
+  <td>Pinned days</td>
+  <td>{{.PinnedDays}}</td>
+</tr>
+  <td>Has logo</td>
+  <td>{{.Logo}}</td>
+</tr>
+  <td>Job Schedule ID</td>
+  <td><a href="/schedules/{{.JobScheduleID}}">js_{{.JobScheduleID}}</a></td>
+</tr>
+  <td>Created date</td>
+  <td>{{admintime .CreatedAt}}</td>
+</tr>
+  <td>Last modified date</td>
+  <td>{{admintime .ModifiedAt}}</td>
+</tr>
+</table>
+{{- end}}
+
+{{- end}}

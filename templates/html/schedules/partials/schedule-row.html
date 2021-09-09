@@ -1,7 +1,7 @@
-{{define "schedule-row"}}
+{{- define "schedule-row"}}
 <tr>
   <td><a href="/schedules/{{.ID}}">view</a></td>
-  <td><a href="/jobs/{{.JobID}}">job_{{.JobID}}</a></td>
+  <!--<td><a href="/jobs/{{.JobID}}">job_{{.JobID}}</a></td>-->
   <td>{{admintime .StartAt}}</td>
   <td>{{admintime .EndAt}}</td>
   <td>{{.Active}}</td>
@@ -12,23 +12,4 @@
   <td>{{admintime .CreatedAt}}</td>
   <td>{{admintime .ModifiedAt}}</td>
 </tr>
-{{end}}
-
-<code>
--[ RECORD 1 ]+----------------------------
-id           | 1
-ksuid        | 1xuEviR1SkhIpfwD8EiTHi8yUqR
-job_id       | 1
-job_ksuid    | 1xuEvkd6HYuaSFzHJvrTiO2HzXI
-start_at     | 2021-09-09 14:13:25.934304
-end_at       | 2021-10-09 23:59:59
-active       | t
-hl_type      | custom
-hl_col       | #4ab9d9
-pinned_days  |
-logo         | f
-intent_id    | 1
-intent_ksuid | 1xuEvlkFSAMIRopHI6Q0jZ4IUD4
-created_at   | 2021-09-09 14:13:25.934304
-modified_at  | 2021-09-09 14:13:25.934304
-</code>
+{{- end}}
