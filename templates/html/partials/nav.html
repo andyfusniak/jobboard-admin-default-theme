@@ -1,10 +1,36 @@
 {{- define "nav" }}
-<section>
-<ul>
-  <li><a href="/users">Users</a></li>
-  <li><a href="/jobs">Jobs</a></li>
-  <li><a href="/events">Events</a></li>
-  <li>System</li>
-</ul>
-</section>
+<header class="bg-gradient-to-r from-indigo-500 to-purple-600">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="relative flex flex-wrap items-center justify-center lg:justify-between">
+      <div class="w-full py-8 sm:py-5">
+        <nav class="hidden sm:flex space-x-4">
+          <a href="/" class="text-white text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10">
+            Home
+          </a>
+          <a href="/users" class="text-indigo-100 text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10">
+            Users
+          </a>
+          <a href="/jobs" class="text-indigo-100 text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10">
+            Jobs
+          </a>
+          <a href="/events" class="text-indigo-100 text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10">
+            Events
+          </a>
+          <a href="#" class="text-indigo-100 text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10">
+            System
+          </a>
+        </nav>
+      </div>
+
+      <div class="absolute right-0 flex-shrink-0 sm:hidden">
+        <!-- Mobile menu button -->
+        <button type="button" class="bg-transparent p-2 rounded-md inline-flex items-center justify-center text-cyan-200 hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white">
+          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
 {{- end }}
