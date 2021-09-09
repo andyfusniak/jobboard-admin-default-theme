@@ -1,23 +1,50 @@
 {{- define "job-row"}}
-<tr>
-  <td><a href="/jobs/{{.Job.ID}}">{{.Job.ID}}<a></td>
-  <td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="text-sm tracking-tight bg-gray-100 border border-gray-300 px-1 rounded">
+    <a href="/jobs/{{.Job.ID}}">{{.Job.ID}}<a>
+  </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">
     {{- if .Job.Visible}}V{{else}}v{{end}}
     {{- if .Job.Searchable}}S{{else}}s{{end}}
     {{- if .Job.Pinned}}P{{else}}p{{end}}
     {{- if .Job.Filled}}F{{else}}f{{end}}
-  </td>
-  <td>{{.Job.UserID}}</td>
-  <td>{{.Job.JobSourceID}}</td>
-  <td>{{.Job.CompanyName}}</td>
-  <td>{{.Job.Location}}</td>
-  <td>{{.Job.Title}}</td>
-  <td>{{currencySymbol .Job.SalaryCurrency}}{{moneyK .Job.SalaryMin}}</td>
-  <td>{{moneyK .Job.SalaryMax}}</td>
-  <td>{{.Job.SalaryUnit}}</td>
-  <td>{{.Job.HLType}}</td>
-  <td>{{.Job.HLCol}}</td>
-  <td><a target="_blank" href="{{$.Site.BaseURL}}/jobs/{{.Job.Slug}}">VIEW</a></td>
-  <td></td>
-</tr>
+  </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tighter">{{.Job.UserID}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Job.JobSourceID}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Job.CompanyName}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Job.Location}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Job.Title}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{currencySymbol .Job.SalaryCurrency}}{{moneyK .Job.SalaryMin}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{moneyK .Job.SalaryMax}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Job.SalaryUnit}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Job.HLType}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight rounded" style="background-color: {{.Job.HLCol}};">{{.Job.HLCol}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <a target="_blank" href="{{$.Site.BaseURL}}/jobs/{{.Job.Slug}}" class="inline-flex items-center px-2 py-1 border border-indigo-700 shadow-sm text-xs font-medium rounded text-indigo-700 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    View
+  </a>
+</td>
 {{- end}}
