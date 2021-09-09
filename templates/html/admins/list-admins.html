@@ -1,0 +1,17 @@
+{{- define "title"}}Admins{{ end }}
+{{- define "content"}}
+
+<p>There are {{.Data.AdminsCount}} admins.</p>
+<table>
+<tr>
+  <th>ID</th>
+  <th>Email</th>
+  <th>Last signed in</th>
+  <th>Created</th>
+  <th>Last changed</th>
+</tr>
+{{- range .Data.Admins}}
+{{- template "admin-row" .}}
+{{- end -}}
+</table>
+{{- end -}}

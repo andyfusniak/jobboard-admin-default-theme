@@ -1,0 +1,9 @@
+{{- define "admin-row"}}
+<tr>
+  <td>adm_{{.ID}}</td>
+  <td>{{.Email}}</td>
+  <td>{{lastsignin .LastSigninAt}}</td>
+  <td>{{admintime .CreatedAt}}
+  <td>{{admintime .ModifiedAt}}
+</tr>
+{{- end}}
