@@ -1,10 +1,5 @@
 {{- define "job-row"}}
 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="text-sm tracking-tight bg-gray-100 border border-gray-300 px-1 rounded">
-    <a href="/jobs/{{.Job.ID}}">{{.Job.ID}}<a>
-  </span>
-</td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
   <span class="tracking-tight">
     {{- if .Job.Visible}}V{{else}}v{{end}}
     {{- if .Job.Searchable}}S{{else}}s{{end}}
@@ -25,7 +20,7 @@
   <span class="tracking-tight">{{.Job.Location}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Job.Title}}</span>
+  <span class="tracking-tight"><a href="/jobs/{{.Job.ID}}">{{.Job.Title}}</a></span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
   <span class="tracking-tight">{{currencySymbol .Job.SalaryCurrency}}{{moneyK .Job.SalaryMin}}</span>
