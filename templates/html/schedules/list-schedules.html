@@ -1,0 +1,26 @@
+{{- define "title"}}Schedules{{ end }}
+{{- define "content"}}
+<h1>Schedules</h1>
+
+Viewing {{.Data.SchedulesCount}} schedules.
+
+<table>
+<tr>
+  <th>ID</th>
+  <th>Job ID</td>
+  <th>Start date</th>
+  <th>End date</th>
+  <th>Active</th>
+  <th>Highlight type</th>
+  <th>Highlight colour</th>
+  <th>Pinned days</th>
+  <th>Has Logo</th>
+  <th>Created</th>
+  <th>Last Modified</th>
+</tr>
+{{- range .Data.Schedules}}
+{{- template "schedule-row" .}}
+{{- end -}}
+</table>
+
+{{- end -}}

@@ -1,0 +1,54 @@
+{{- define "title"}}Schedules{{end}}
+{{- define "content"}}
+<h1>Schedules</h1>
+
+{{- with .Data.Schedule}}
+<table>
+<tr>
+  <td>ID</td>
+  <td>{{.ID}}</td>
+</tr>
+<tr>
+  <td>Job ID</td>
+  <td>{{.JobID}}</td>
+</tr>
+<tr>
+  <td>Start date</td>
+  <td>{{admintime .StartAt}}</td>
+</tr>
+<tr>
+  <td>End date</td>
+  <td>{{admintime .EndAt}}</td>
+</tr>
+<tr>
+  <td>Active</td>
+  <td>{{.Active}}</td>
+</tr>
+<tr>
+  <td>Highlight type</td>
+  <td>{{.HLType}}</td>
+</tr>
+<tr>
+  <td>Highlight colour</td>
+  <td>{{.HLCol}}</td>
+</tr>
+<tr>
+  <td>Pinned days</td>
+  <td>{{.PinnedDays}}</td>
+</tr>
+<tr>
+  <td>Has Logo</td>
+  <td>{{.Logo}}</td>
+</tr>
+<tr>
+  <td>Created</td>
+  <td>{{admintime .CreatedAt}}</td>
+</tr>
+<tr>
+  <td>Last Modified</td>
+  <td>{{admintime .ModifiedAt}}</td>
+</tr>
+</table>
+{{- end}}
+
+{{- end}}
