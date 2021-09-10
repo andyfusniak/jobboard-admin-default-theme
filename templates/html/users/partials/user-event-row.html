@@ -1,8 +1,14 @@
 {{- define "user-event-row"}}
-<tr>
-  <td>{{.ID}}</td>
-  <td>{{.Name}}</td>
-  <td>{{.Message}}</td>
-  <td>{{ admintime .CreatedAt}}</td>
-</tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.ID}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Name}}</span>
+</td>
+<td class="px-6 py-4 text-sm text-gray-900">
+  <span class="tracking-tight">{{.Message}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{ admintime .CreatedAt}}</span>
+</td>
 {{- end}}

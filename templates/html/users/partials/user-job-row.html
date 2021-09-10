@@ -1,22 +1,44 @@
 {{- define "user-job-row"}}
 {{- with .Job}}
-<tr>
-  <td>{{.ID}}</td>
-   <td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.ID}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">
     {{- if .Visible}}V{{else}}v{{end}}
     {{- if .Searchable}}S{{else}}s{{end}}
     {{- if .Pinned}}P{{else}}p{{end}}
     {{- if .Filled}}F{{else}}f{{end}}
-  </td>
-  <td>{{.CompanyName}}</td>
-  <td>{{.Location}}</td>
-  <td>{{.Title}}</td>
-  <td>{{currencySymbol .SalaryCurrency}}{{moneyK .SalaryMin}}</td>
-  <td>{{moneyK .SalaryMax}}</td>
-  <td>{{.SalaryUnit}}</td>
-  <td>{{.HLType}}</td>
-  <td>{{.HLCol}}</td>
-  <td><a target="_blank" href="{{$.Site.BaseURL}}/jobs/{{.Slug}}">VIEW</a></td>
-</tr>
+  </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.CompanyName}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Location}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.Title}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{currencySymbol .SalaryCurrency}}{{moneyK .SalaryMin}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{moneyK .SalaryMax}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.SalaryUnit}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight">{{.HLType}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <span class="tracking-tight rounded" style="background-color: {{.HLCol}};">{{.HLCol}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+  <a target="_blank" href="{{$.Site.BaseURL}}/jobs/{{.Slug}}" class="inline-flex items-center px-2 py-1 shadow-sm rounded text-indigo-700 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+  </a>
+</td>
 {{- end}}
 {{- end}}

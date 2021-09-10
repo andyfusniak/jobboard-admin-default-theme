@@ -1,48 +1,165 @@
-{{- define "title"}}View User{{end}}
+{{- define "title"}}User Details{{end}}
 {{- define "content"}}
-<h1>view user</h1>
+<div class="max-w-3xl px-4 sm:px-6 lg:px-8">
+  <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">User Details</h1>
 
-{{- with .Data.User}}
-<table>
-<tr>
-  <td>ID</td>
-  <td>{{.ID}}</td>
-</tr>
-<tr>
-  <td>Email</td>
-  <td>{{.Email}}</td>
-</tr>
-<tr>
-  <td>Role</td>
-  <td>{{.Role}}</td>
-</tr>
-<tr>
-  <td>Metadata</td>
-  <td>{{.Metadata}}</td>
-</tr>
-<tr>
-  <td>Created</td>
-  <td>{{admintime .CreatedAt}}</td>
-</tr>
-<tr>
-  <td>Last Modified</td>
-  <td>{{admintime .ModifiedAt}}</td>
-</tr>
-</table>
-{{- end}}
+  <!-- User details card -->
+  {{- with .Data.User}}
+  <div class="mt-16 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            ID
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.ID}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Email
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Email}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Role
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Role}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Meta data
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Metadata}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Created at
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .CreatedAt}}
+          </dd>
+        </div>
+        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Last Modified
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .ModifiedAt}}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  {{- end}}
+</div>
 
-<h2>Jobs</h2>
-<table>
-{{- range .Data.Jobs}}
-{{- template "user-job-row" dict "Site" $.Site "Job" .}}
-{{- end}}
-</table>
+<div x-data="{
+  openTab: 1,
+  activeClasses: 'border-indigo-500 text-indigo-600',
+  inactiveClasses: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 '
+}"
+class="px-4">
+  <!-- Tabs -->
+  <div class="mt-14">
+    <div class="border-b border-gray-200">
+      <ul class="-mb-px flex space-x-8">
+        <li @click="openTab = 1" :class="openTab === 1 ? activeClasses : inactiveClasses" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer">
+        Jobs
+        </li>
 
-<h2>Events</h2>
-<table>
-{{- range .Data.Events}}
-{{- template "user-event-row" .}}
-{{- end}}
-</table>
+        <li @click="openTab = 2" :class="openTab === 2 ? activeClasses : inactiveClasses" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer">
+          Events
+        </li>
+      </ul>
+    </div>
+  </div>
 
+  <!-- Jobs table -->
+  <div x-show="openTab === 1" class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Job ID
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Paid features
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Company name
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Location
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Title
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Min
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Max
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Unit
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Hl Type
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Hl Col
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            View
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {{- range .Data.Jobs}}
+        <tr class="bg-white">
+          {{- template "user-job-row" dict "Site" $.Site "Job" .}}
+        </tr>
+        {{- end}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Events table -->
+  <div x-show="openTab === 2" class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            ID
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Name
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Message
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Created
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {{- range .Data.Events}}
+        <tr class="bg-white">
+          {{- template "user-event-row" .}}
+        </tr>
+        {{- end}}
+      </tbody>
+    </table>
+  </div>
+</div>
 {{- end}}
