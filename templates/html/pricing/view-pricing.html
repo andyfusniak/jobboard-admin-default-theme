@@ -1,0 +1,35 @@
+{{- define "title"}}Pricing{{end}}
+{{- define "content"}}
+<h1>Pricing</h1>
+
+{{- range .Data.Pricing.Products }}
+<p><strong>Product: {{.Name}}: {{.Description}} ({{.UnitLabel}})</strong></p>
+<hr>
+<table >
+<tr>
+  <th>Nickname</th>
+  <th>Display price</th>
+  <th>Recurring Interval</th>
+  <th>Recurring Count</th>
+  <th>Created date</th>
+  <th>Last modified</th>
+</tr>
+{{- range .Prices}}
+<tr style="border-top: 1px solid gray;">
+  <td>{{.Nickname}}</td>
+  <td>{{.UnitAmountDisplay}}</td>
+  <td>{{.RecurringInterval}}</td>
+
+  <td>{{.RecurringCount}}</td>
+  <td>{{admintime .CreatedAt}}</td>
+  <td>{{admintime .ModifiedAt}}</td>
+<tr>
+{{- end}}
+</table>
+<hr>
+
+<p>&nbsp;</p>
+{{- end }}
+
+
+{{- end}}
