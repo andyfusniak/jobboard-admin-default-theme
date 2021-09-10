@@ -126,10 +126,6 @@
   <td>{{.Logo}}</td>
 <tr>
 <tr>
-  <td>Job Schedule ID</td>
-  <td>{{.JobScheduleID}}</td>
-<tr>
-<tr>
   <td>Created</td>
   <td>{{admintime .CreatedAt}}</td>
 <tr>
@@ -140,8 +136,8 @@
 </table>
 <hr>
 {{- end}}
-<h2>Schedule</h2>
-{{- range $.Data.JobSchedules}}
+<h2>Schedules</h2>
+{{- range $.Data.Schedules}}
 <table>
 <tr>
   <td>ID</td>
