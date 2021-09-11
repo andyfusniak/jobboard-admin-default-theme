@@ -1,0 +1,10 @@
+{{- define "title"}}System : Skills{{end}}
+{{- define "system-content"}}
+<h1>Skills</h1>
+{{- range .Data.TagsSet.Groups}}
+<p><strong>{{.Title}} ({{.Name}})</strong></p>
+{{- range .Tags}}
+<p>{{.Title}} ({{.Name}})</p>
+{{- end}}
+{{- end }}
+{{- end}}

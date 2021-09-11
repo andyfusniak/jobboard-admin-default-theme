@@ -1,0 +1,12 @@
+{{- define "title"}}System{{end}}
+{{- define "content"}}
+
+<div style="float: left">
+{{- template "system-nav" }}
+</div>
+
+<div style="float: left">
+{{- template "system-content" .}}
+</div>
+
+{{- end}}
