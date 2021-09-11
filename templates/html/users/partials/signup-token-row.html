@@ -1,0 +1,10 @@
+{{- define "signup-token-row"}}
+<tr>
+  <td>{{.Token}}</td>
+  <td>{{.Email}}</td>
+  <td>{{.Role}}</td>
+  <td>{{.Status}}</td>
+  <td>{{admintime .CreatedAt}}</td>
+  <td>{{admintime .ModifiedAt}}</td>
+</tr>
+{{- end}}
