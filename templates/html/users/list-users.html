@@ -1,59 +1,131 @@
 {{- define "title"}}User List{{end}}
 {{- define "content"}}
-
-<table>
-<tr>
-  <th>Token</th>
-  <th>Email</th>
-  <th>Role</th>
-  <th>Status</th>
-  <th>Created date</th>
-  <th>Last modified</th>
-</tr>
-{{- range .Data.SignupTokens}}
-{{- template "signup-token-row" .}}
-{{- end}}
-</table>
-
 <div class="max-w-7xl px-4 sm:px-6 lg:px-8">
   <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">User List</h1>
   <h2 class="my-8 text-lg leading-6 font-medium text-gray-600">Viewing {{.Data.UsersCount}} users</h2>
 </div>
 
-<div class="mt-10 flex flex-col">
-  <div class="overflow-x-auto">
-    <div class="py-6 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead>
-            <tr>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Email
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Role
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Meta data
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Created
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Last Modified
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            {{- range .Data.Users}}
-            <tr class="bg-white hover:bg-gray-50">
-              {{- template "user-row" dict "Site" $.Site "User" .}}
-            </tr>
-            {{- end}}
-          </tbody>
-        </table>
-      </div>
+<!-- Tabs -->
+<div x-data="{
+  openTab: 1,
+  activeClasses: 'border-indigo-500 text-indigo-600',
+  inactiveClasses: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 ',
+  params: new URL(location.href).searchParams,
+  asc: true,
+  limit(n) {
+    this.params.set('limit', n);
+    this.go();
+  },
+  toggle(field) {
+    if (field === this.params.get('order_by')) {
+      if (this.params.get('order_direction') === 'asc') {
+        this.params.set('order_direction', 'desc');
+        this.asc = false;
+        console.log(this.asc)
+      } else {
+        this.params.set('order_direction', 'asc');
+      }
+      this.go();
+      return;
+    }
+    this.params.set('order_by', field);
+    this.params.set('order_direction', 'asc');
+    this.go();
+  },
+  go() {
+    window.location.href = location.origin + location.pathname + '?' + this.params.toString();
+  }
+}"
+  class="px-4">
+
+  <button @click="limit(10)">LIMIT 10</button>
+  <button @click="limit(30)">LIMIT 30</button>
+  <button @click="go()">GO</button>
+
+  <div class="mt-10">
+    <div class="border-b border-gray-200">
+      <ul class="-mb-px flex space-x-8">
+        <li @click="openTab = 1" :class="openTab === 1 ? activeClasses : inactiveClasses" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer">
+          All users
+        </li>
+
+        <li @click="openTab = 2" :class="openTab === 2 ? activeClasses : inactiveClasses" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer">
+          Unconfirmed users
+        </li>
+      </ul>
     </div>
   </div>
+
+  <!-- All users table -->
+  <div x-show="openTab === 1" class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th class=" gap-1 px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            <button @click="toggle('email')" type="button" class="flex items-center gap-1 cursor-pointer">
+              <span>Email</span>
+              <svg x-show="asc == false" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              <!-- <svg x-show="asc == false" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg> -->
+            </button>
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            <span @click="toggle('role')">Role</span>
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Meta data
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            <span @click="toggle('created_at')">Created</span>
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            <span @click="toggle('modified_at')">Last Modified</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {{- range .Data.Users}}
+        <tr class="bg-white hover:bg-gray-50">
+          {{- template "user-row" dict "Site" $.Site "User" .}}
+        </tr>
+        {{- end}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Unconfirmed users -->
+  <div x-show="openTab === 2" class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Token
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Email
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Role
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Status
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Created
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Modified
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {{- range .Data.SignupTokens}}
+        <tr class="bg-white hover:bg-gray-50">
+          {{- template "signup-token-row" .}}
+        </tr>
+        {{- end}}
+      </tbody>
+    </table>
+  </div>
 </div>
+
 {{- end}}
