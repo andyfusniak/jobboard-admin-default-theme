@@ -1,0 +1,9 @@
+{{- define "source-row"}}
+<tr>
+  <td>{{.ID}}</td>
+  <td>{{.Name}}</td>
+  <td>{{.Short}}</td>
+  <td>{{admintime .CreatedAt}}</td>
+  <td>{{admintime .ModifiedAt}}</td>
+</tr>
+{{- end}}

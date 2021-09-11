@@ -1,0 +1,20 @@
+{{- define "title"}}Sources{{ end }}
+{{- define "content"}}
+<h1>Sources</h1>
+
+Viewing {{.Data.SourcesCount}} sources.
+
+<table>
+<tr>
+  <th>ID</th>
+  <th>Name</th>
+  <th>Short description</th>
+  <th>Created date</th>
+  <th>Last modified</th>
+</tr>
+{{- range .Data.Sources}}
+{{- template "source-row" .}}
+{{- end -}}
+</table>
+
+{{- end -}}
