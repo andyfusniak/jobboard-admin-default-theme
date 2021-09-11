@@ -1,39 +1,39 @@
 {{- define "job-row"}}
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 hover:text-indigo-600">
-  <span class="text-sm tracking-tight bg-gray-100 border border-gray-300 hover:border-indigo-600 px-1 rounded">
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-indigo-700 hover:text-indigo-500 hover:underline">
     <a href="/users/{{.Job.UserID}}">{{fkmapper .UserMap .Job.UserID}}</a>
   </span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">
     {{- if .Job.Visible}}V{{else}}v{{end}}
     {{- if .Job.Searchable}}S{{else}}s{{end}}
     {{- if .Job.Pinned}}P{{else}}p{{end}}
     {{- if .Job.Filled}}F{{else}}f{{end}}
   </span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Job.CompanyName}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{.Job.CompanyName}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Job.Location}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{.Job.Location}}</span>
 </td>
-<td class="px-6 py-4 text-sm text-gray-900 hover:text-indigo-600">
-  <span class="tracking-tight"><a href="/jobs/{{.Job.ID}}">{{.Job.Title}}</a></span>
+<td class="px-6 py-4 text-sm">
+  <span class="tracking-tight text-sm text-indigo-700 hover:text-indigo-500 hover:underline"><a href="/jobs/{{.Job.ID}}">{{.Job.Title}}</a></span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{currencySymbol .Job.SalaryCurrency}}{{moneyK .Job.SalaryMin}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{currencySymbol .Job.SalaryCurrency}}{{moneyK .Job.SalaryMin}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{moneyK .Job.SalaryMax}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{moneyK .Job.SalaryMax}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Job.SalaryUnit}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{.Job.SalaryUnit}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Job.HLType}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{.Job.HLType}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight rounded" style="background-color: {{.Job.HLCol}};">{{.Job.HLCol}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight rounded text-sm text-gray-900" style="background-color: {{.Job.HLCol}};">{{.Job.HLCol}}</span>
 </td>
 {{- end}}

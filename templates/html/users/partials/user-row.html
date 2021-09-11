@@ -1,19 +1,19 @@
 {{- define "user-row"}}
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 hover:text-indigo-600">
-  <span class="text-sm tracking-tight bg-gray-100 border border-gray-300 hover:border-indigo-600 px-1 rounded">
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-indigo-700 hover:text-indigo-500 hover:underline">
     <a href="/users/{{.User.ID}}">{{.User.Email}}</a>
   </span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.User.Role}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{.User.Role}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.User.Metadata}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{.User.Metadata}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{admintime .User.CreatedAt}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{admintime .User.CreatedAt}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{admintime .User.ModifiedAt}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{admintime .User.ModifiedAt}}</span>
 </td>
 {{- end}}
