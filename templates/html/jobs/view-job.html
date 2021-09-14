@@ -1,98 +1,234 @@
 {{- define "title"}}View Job{{end}}
 {{- define "content"}}
-<h1>view job</h1>
 
-{{- with .Data.Job}}
-<table>
-<tr>
-  <td>ID</td>
-  <td>{{.ID}}</td>
-</tr>
-<tr>
-  <td>User ID</td>
-  <td><a href="/users/{{.UserID}}">{{.UserID}}</a></td>
-</tr>
-<tr>
-  <td>Job Source ID</td>
-  <td>{{.JobSourceID}}</td>
-</tr>
-<tr>
-  <td>Visible</td>
-  <td>{{.Visible}}</td>
-</tr>
-<tr>
-  <td>Searchable</td>
-  <td>{{.Searchable}}</td>
-</tr>
-<tr>
-  <td>Pinned</td>
-  <td>{{.Pinned}}</td>
-</tr>
-<tr>
-  <td>Filled</td>
-  <td>{{.Filled}}</td>
-</tr>
-<tr>
-  <td>Highlighted</td>
-  <td>{{.HLType}}</td>
-</tr>
-<tr>
-  <td>HL Col</td>
-  <td>{{.HLCol}}</td>
-</tr>
-<tr>
-  <td>Slug</td>
-  <td>{{.Slug}}</td>
-</tr>
-<tr>
-  <td>Title</td>
-  <td>{{.Title}}</td>
-</tr>
-<tr>
-  <td>Location</td>
-  <td>{{.Location}}</td>
-</tr>
-<tr>
-  <td>CompanyName</td>
-  <td>{{.CompanyName}}</td>
-</tr>
-<tr>
-  <td>Salary</td>
-  <td>&#163;{{moneyK .SalaryMin}} - &#163;{{moneyK .SalaryMax}} {{.SalaryCurrency}} {{.SalaryUnit}}</td>
-</tr>
-<tr>
-  <td>Logo URL</td>
-  <td><img src="{{$.Site.BaseURL}}/{{.LogoURL}}"></td>
-</tr>
-<tr>
-  <td>EmpType</td>
-  <td>{{.EmpType}}</td>
-</tr>
-<tr>
-  <td>Remote</td>
-  <td>{{.Remote}}</td>
-</tr>
-<tr>
-  <td>Skills</td>
-  <td>{{.SkillsContainer.Raw}}</td>
-</tr>
-<tr>
-  <td>Apply URL</td>
-  <td>{{.ApplyURL}}</td>
-</tr>
-<tr>
-  <td>Description</td>
-  <td><textarea rows="10" cols="80" readonly>{{.Description}}</textarea></td>
-</tr>
-<tr>
-  <td>Created</td>
-  <td>{{admintime .CreatedAt}}</td>
-</tr>
-<tr>
-  <td>Last Modified</td>
-  <td>{{admintime .ModifiedAt}}</td>
-</tr>
-</table>
+<div class="max-w-5xl px-4 sm:px-6 lg:px-8">
+  <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Job Details</h1>
+  <!-- Job details card -->
+  {{- with .Data.Job}}
+  <div class="mt-16 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="border-t border-gray-200 px-4 py-4 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            ID
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+           {{.ID}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            User ID
+          </dt>
+          <dd class="mt-1 text-sm text-indigo-700 hover:text-indigo-500 hover:underline sm:mt-0 sm:col-span-2">
+            <a href="/users/{{.UserID}}">{{.UserID}}</a>
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Visible
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{if .Visible}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{end}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Searchable
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{if .Searchable}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{end}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Pinned
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{if .Pinned}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{end}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Filled
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{if .Filled}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{end}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Highlighted
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{if .HLType}}
+             <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{end}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Highlight Colour
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{if .HLCol}}
+            <span class="tracking-tight rounded text-sm text-gray-900"
+              style="background-color: {{.HLCol}};">{{.HLCol}}
+            </span>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{end}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Slug
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Slug}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Title
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Title}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Location
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Location}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Company Name
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.CompanyName}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Salary
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            &#163;{{moneyK .SalaryMin}} - &#163;{{moneyK .SalaryMax}} {{.SalaryCurrency}} {{.SalaryUnit}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Logo
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+           <img src="{{$.Site.BaseURL}}/{{.LogoURL}}">
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Employment Type
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+           {{.EmpType}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Remote
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Remote}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Skills
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.SkillsContainer.Raw}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Apply URL
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.ApplyURL}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Description
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Description}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Created
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .CreatedAt}}
+          </dd>
+        </div>
+        <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Modified
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .ModifiedAt}}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  {{- end}}
+</div>
 
 <h2>Payment Intents</h2>
 {{- range $.Data.PaymentIntents}}
@@ -187,5 +323,5 @@
 <hr>
 {{- end}}
 
-{{- end}}
+
 {{- end}}
