@@ -1,13 +1,14 @@
-{{- define "schedule-row"}}
+{{- define "order-row"}}
 <tr>
-  <td><a href="/schedules/{{.ID}}">view</a></td>
+  <td><a href="/orders/{{.ID}}">view</a></td>
   <!--<td><a href="/jobs/{{.JobID}}">job_{{.JobID}}</a></td>-->
   <td>{{admintime .StartAt}}</td>
   <td>{{admintime .EndAt}}</td>
-  <td>{{.Active}}</td>
+  <td>{{.Status}}</td>
+  <td>{{.Kind}}</td>
+  <td>{{.Pinned}}</td>
   <td>{{.HLType}}</td>
   <td>{{.HLCol}}</td>
-  <td>{{.PinnedDays}}</td>
   <td>{{.Logo}}</td>
   <td>{{admintime .CreatedAt}}</td>
   <td>{{admintime .ModifiedAt}}</td>

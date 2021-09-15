@@ -272,8 +272,9 @@
 </table>
 <hr>
 {{- end}}
-<h2>Schedules</h2>
-{{- range $.Data.Schedules}}
+
+<h2>Orders</h2>
+{{- range $.Data.Orders}}
 <table>
 <tr>
   <td>ID</td>
@@ -292,9 +293,17 @@
   <td>{{admintime .EndAt}}</td>
 </tr>
 <tr>
-  <td>Active</td>
-  <td>{{.Active}}</td>
+  <td>Status</td>
+  <td>{{.Status}}</td>
 </tr>
+<tr>
+  <td>Kind</td>
+  <td>{{.Kind}}</td>
+</tr>
+<tr>
+  <td>Pinned</td>
+  <td>{{.Pinned}}</td>
+<tr>
 <tr>
   <td>HLType</td>
   <td>{{.HLType}}</td>
@@ -302,10 +311,6 @@
 <tr>
   <td>HLCol</td>
   <td>{{.HLCol}}</td>
-<tr>
-<tr>
-  <td>Pinned days</td>
-  <td>{{.PinnedDays}}</td>
 <tr>
 <tr>
   <td>Logo</td>

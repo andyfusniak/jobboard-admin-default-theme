@@ -1,8 +1,8 @@
-{{- define "title"}}Schedules{{ end }}
+{{- define "title"}}Orders{{ end }}
 {{- define "content"}}
-<h1>Schedules</h1>
+<h1>Orders</h1>
 
-Viewing {{.Data.SchedulesCount}} schedules.
+Viewing {{.Data.OrdersCount}} orders.
 
 <table>
 <tr>
@@ -10,16 +10,17 @@ Viewing {{.Data.SchedulesCount}} schedules.
   <!--<th>Job ID</td>-->
   <th>Start date</th>
   <th>End date</th>
-  <th>Active</th>
+  <th>Status</th>
+  <th>Kind</th>
+  <th>Pinned</th>
   <th>Highlight type</th>
   <th>Highlight colour</th>
-  <th>Pinned days</th>
   <th>Has Logo</th>
   <th>Created</th>
   <th>Last Modified</th>
 </tr>
-{{- range .Data.Schedules}}
-{{- template "schedule-row" .}}
+{{- range .Data.Orders}}
+{{- template "order-row" .}}
 {{- end -}}
 </table>
 
