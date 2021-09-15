@@ -1,20 +1,41 @@
 {{- define "title"}}Sources{{end}}
 {{- define "content"}}
-<h1>Sources</h1>
 
-Viewing {{.Data.SourcesCount}} sources.
+<div class="max-w-7xl px-4 sm:px-6 lg:px-8">
+  <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Source List</h1>
+  <h2 class="my-8 text-lg leading-6 font-medium text-gray-600">Viewing {{.Data.SourcesCount}} sources</h2>
+</div>
 
-<table>
-<tr>
-  <th>ID</th>
-  <th>Name</th>
-  <th>Short description</th>
-  <th>Created date</th>
-  <th>Last modified</th>
-</tr>
-{{- range .Data.Sources}}
-{{- template "source-row" .}}
-{{- end -}}
-</table>
-
+<div class="px-4">
+  <div class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            ID
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Name
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Short description
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Created
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Modified
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {{- range .Data.Sources}}
+        <tr class="bg-white hover:bg-gray-50">
+          {{- template "source-row" .}}
+        </tr>
+        {{- end}}
+      </tbody>
+    </table>
+  </div>
+</div>
 {{- end}}
