@@ -1,11 +1,23 @@
 {{- define "admin-row"}}
-<tr>
-  <td>adm_{{.ID}}</td>
-  <td>{{.Email}}</td>
-  <td>{{.Firstname}}</td>
-  <td>{{.Lastname}}</td>
-  <td>{{lastsignin .LastSigninAt}}</td>
-  <td>{{admintime .CreatedAt}}
-  <td>{{admintime .ModifiedAt}}
-</tr>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">adm_{{.ID}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight text-sm text-gray-900">{{.Email}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight rounded text-sm text-gray-900">{{.Firstname}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight rounded text-sm text-gray-900">{{.Lastname}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight rounded text-sm text-gray-900">{{lastsignin .LastSigninAt}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight rounded text-sm text-gray-900">{{admintime .CreatedAt}}</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="tracking-tight rounded text-sm text-gray-900">{{admintime .ModifiedAt}}</span>
+</td>
 {{- end}}
