@@ -1,27 +1,59 @@
 {{- define "title"}}Orders{{ end }}
 {{- define "content"}}
-<h1>Orders</h1>
 
-Viewing {{.Data.OrdersCount}} orders.
+<div class="max-w-7xl px-4 sm:px-6 lg:px-8">
+  <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Orders</h1>
+  <h2 class="my-8 text-lg leading-6 font-medium text-gray-600">Viewing {{.Data.OrdersCount}} orders</h2>
+</div>
 
-<table>
-<tr>
-  <th>ID</th>
-  <!--<th>Job ID</td>-->
-  <th>Start date</th>
-  <th>End date</th>
-  <th>Status</th>
-  <th>Kind</th>
-  <th>Pinned</th>
-  <th>Highlight type</th>
-  <th>Highlight colour</th>
-  <th>Has Logo</th>
-  <th>Created</th>
-  <th>Last Modified</th>
-</tr>
-{{- range .Data.Orders}}
-{{- template "order-row" .}}
-{{- end -}}
-</table>
-
+<div class="px-4">
+  <div class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            ID
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Start date
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            End date
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Status
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Kind
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Pinned
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Highlight type
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Highlight Colour
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Logo
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Created
+          </th>
+          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            Modified
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {{- range .Data.Orders}}
+        <tr class="bg-white hover:bg-gray-50">
+          {{- template "order-row" .}}
+        </tr>
+        {{- end}}
+      </tbody>
+    </table>
+  </div>
+</div>
 {{- end -}}

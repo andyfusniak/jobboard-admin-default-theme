@@ -1,58 +1,133 @@
 {{- define "title"}}Order{{end}}
 {{- define "content"}}
-<h1>Order</h1>
+<div class="max-w-3xl px-4 sm:px-6 lg:px-8">
+  <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Order Details</h1>
 
+<!-- Order details card -->
 {{- with .Data.Order}}
-<table>
-<tr>
-  <td>ID</td>
-  <td>{{.ID}}</td>
-</tr>
-<tr>
-  <td>Job ID</td>
-  <td>{{.JobID}}</td>
-</tr>
-<tr>
-  <td>Start date</td>
-  <td>{{admintime .StartAt}}</td>
-</tr>
-<tr>
-  <td>End date</td>
-  <td>{{admintime .EndAt}}</td>
-</tr>
-<tr>
-  <td>Status</td>
-  <td>{{.Status}}</td>
-</tr>
-<tr>
-  <td>Kind</td>
-  <td>{{.Kind}}</td>
-</tr>
-<tr>
-  <td>Pinned</td>
-  <td>{{.Pinned}}</td>
-</tr>
-<tr>
-  <td>Highlight type</td>
-  <td>{{.HLType}}</td>
-</tr>
-<tr>
-  <td>Highlight colour</td>
-  <td>{{.HLCol}}</td>
-</tr>
-<tr>
-  <td>Has Logo</td>
-  <td>{{.Logo}}</td>
-</tr>
-<tr>
-  <td>Created</td>
-  <td>{{admintime .CreatedAt}}</td>
-</tr>
-<tr>
-  <td>Last Modified</td>
-  <td>{{admintime .ModifiedAt}}</td>
-</tr>
-</table>
-{{- end}}
-
+  <div class="mt-16 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            ID
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.ID}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Job ID
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.JobID}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Start Date
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .StartAt}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            End Date
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .EndAt}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Status
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Status}}
+            {{ if eq .Status "pending" -}}
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+              {{.Status}}
+            </span>
+            {{- end}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Kind
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Kind}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Pinned
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{- if .Pinned -}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{- end}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Highlight Type
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.HLType}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Highlight Colour
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <span class="tracking-tight text-sm text-gray-900 rounded" style="background-color: {{.HLCol}};">{{.HLCol}}</span>
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Logo
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{- if .Logo -}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{- end}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Created
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .CreatedAt}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Modified
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .ModifiedAt}}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  {{- end}}
+</div>
 {{- end}}
