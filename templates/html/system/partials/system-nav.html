@@ -1,8 +1,19 @@
 {{- define "system-nav"}}
-<ul>
-  <li><a href="/system">Overview</a></li>
-  <li><a href="/system/config">Config</a></li>
-  <li><a href="/system/skills">Skills</a></li>
-  <li><a href="/system/database">Database</a></li>
-</ul>
+<nav class="space-y-1">
+  <a href="/system" class="border-l border-indigo-600 text-indigo-600 hover:text-indigo-400 items-center px-3 py-2 text-sm font-semibold">
+    <span class="truncate">Overview</span>
+  </a>
+
+  <a href="/system/config" class="text-gray-600 hover:text-indigo-400 flex items-center px-3 py-2 text-sm font-medium">
+    <span class="truncate">Config</span>
+  </a>
+
+  <a href="/system/skills" class="text-gray-600 hover:text-indigo-400 flex items-center px-3 py-2 text-sm font-medium">
+    <span class="truncate">Skills</span>
+  </a>
+
+  <a href="/system/database" class="text-gray-600 hover:text-indigo-400 flex items-center px-3 py-2 text-sm font-medium">
+    <span class="truncate">Database</span>
+  </a>
+</nav>
 {{- end}}

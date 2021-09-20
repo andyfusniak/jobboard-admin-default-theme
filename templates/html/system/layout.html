@@ -1,12 +1,13 @@
 {{- define "title"}}System{{end}}
 {{- define "content"}}
-
-<div style="float: left">
-{{- template "system-nav" }}
+<div class="flex">
+  <div class="flex flex-col items-center w-64 pt-10 pb-4">
+    {{- template "system-nav" }}
+  </div>
+  <div class="pt-10">
+    <div class="px-6">
+      {{- template "system-content" .}}
+    </div>
+  </div>
 </div>
-
-<div style="float: left">
-{{- template "system-content" .}}
-</div>
-
 {{- end}}
