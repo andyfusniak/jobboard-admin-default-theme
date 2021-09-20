@@ -5,10 +5,26 @@
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
   <span class="tracking-tight text-sm text-gray-900">
-    {{- if .Visible}}V{{else}}v{{end}}
-    {{- if .Searchable}}S{{else}}s{{end}}
-    {{- if .Pinned}}P{{else}}p{{end}}
-    {{- if .Filled}}F{{else}}f{{end}}
+    {{- if .Visible}}
+    <span class="material-icons-outlined text-green-700">visibility</span>
+    {{else}}
+    <span class="material-icons-outlined text-gray-200">visibility_off</span>
+    {{end}}
+    {{- if .Searchable}}
+    <span class="material-icons-outlined text-green-700">search</span>
+    {{else}}
+    <span class="material-icons-outlined text-gray-200">search</span>
+    {{end}}
+    {{- if .Pinned}}
+    <span class="material-icons-outlined text-green-700">push_pin</span>
+    {{else -}}
+    <span class="material-icons-outlined text-gray-200">push_pin</span>
+    {{- end}}
+    {{- if .Filled}}
+    <span class="material-icons-outlined text-green-700">lock</span>
+    {{else}}
+    <span class="material-icons-outlined text-gray-200">lock</span>
+    {{end}}
   </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">

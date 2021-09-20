@@ -22,15 +22,11 @@
   <span class="tracking-tight text-sm text-gray-900">{{.Kind}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  {{if .Pinned -}}
-  <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-  </svg>
+  {{- if .Pinned -}}
+  <span class="material-icons-outlined text-green-700">push_pin</span>
   {{else -}}
-  <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-  </svg>
-  {{end -}}
+  <span class="material-icons-outlined text-gray-200">push_pin</span>
+  {{- end}}
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
   <span class="tracking-tight text-sm text-gray-900">{{.HLType}}</span>
@@ -40,13 +36,9 @@
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
   {{if .Logo -}}
-  <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-  </svg>
+  <span class="material-icons-outlined text-green-700">image</span>
   {{else -}}
-  <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-  </svg>
+  <span class="material-icons-outlined text-gray-200">image</span>
   {{end -}}
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
