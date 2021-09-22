@@ -11,7 +11,6 @@
   activeClasses: 'border-indigo-500 text-indigo-600',
   inactiveClasses: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 ',
   params: new URL(location.href).searchParams,
-  asc: true,
   limit(n) {
     this.params.set('limit', n);
     this.go();
@@ -20,8 +19,6 @@
     if (field === this.params.get('order_by')) {
       if (this.params.get('order_direction') === 'asc') {
         this.params.set('order_direction', 'desc');
-        this.asc = false;
-        console.log(this.asc)
       } else {
         this.params.set('order_direction', 'asc');
       }
@@ -57,75 +54,175 @@
   </div>
 
   <!-- All users table -->
-  <div x-show="openTab === 1" class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-    <table class="min-w-full divide-y divide-gray-200">
-      <thead>
-        <tr>
-          <th class=" gap-1 px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            <button @click="toggle('email')" type="button" class="flex items-center gap-1 cursor-pointer">
-              <span>Email</span>
-              <svg x-show="asc == false" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-              <!-- <svg x-show="asc == false" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg> -->
-            </button>
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            <span @click="toggle('role')">Role</span>
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            Meta data
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            <span @click="toggle('created_at')">Created</span>
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            <span @click="toggle('modified_at')">Last Modified</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody class="bg-white divide-y divide-gray-200">
-        {{- range .Data.Users}}
-        <tr class="bg-white hover:bg-gray-50">
-          {{- template "user-row" dict "Site" $.Site "User" .}}
-        </tr>
-        {{- end}}
-      </tbody>
-    </table>
+  <div x-show="openTab === 1" class="my-10 overflow-auto shadow border-gray-200 sm:rounded-lg">
+    <div class="inline-block min-w-full">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead>
+          <tr>
+            <th class="gap-1 px-6 py-3 bg-gray-50 text-left text-xs text-gray-500">
+              <button @click="toggle('email')" type="button" class="flex items-center gap-1 cursor-pointer">
+                <span class="font-medium uppercase">Email</span>
+                <template x-if="location.pathname && params == '' ">
+                  <span class="material-icons-outlined text-sm">arrow_downward</span>
+                </template>
+                <span x-show="params.get('order_direction') === 'asc'" class="material-icons-outlined text-sm">arrow_downward</span>
+                <span x-show="params.get('order_direction') === 'desc'" class="material-icons-outlined text-sm">arrow_upward</span>
+              </button>
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs text-gray-500">
+              <button @click="toggle('role')" type="button" class="flex items-center gap-1 cursor-pointer">
+                <span class="font-medium uppercase">Role</span>
+                <template x-if="location.pathname && params == '' ">
+                  <span class="material-icons-outlined text-sm">arrow_downward</span>
+                </template>
+                <span x-show="params.get('order_direction') === 'asc'" class="material-icons-outlined text-sm">arrow_downward</span>
+                <span x-show="params.get('order_direction') === 'desc'" class="material-icons-outlined text-sm">arrow_upward</span>
+              </button>
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+              Meta data
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs text-gray-500">
+              <button @click="toggle('created_at')" type="button" class="flex items-center gap-1 cursor-pointer">
+                <span class="font-medium uppercase">Created</span>
+                <template x-if="location.pathname && params == '' ">
+                  <span class="material-icons-outlined text-sm">arrow_downward</span>
+                </template>
+                <span x-show="params.get('order_direction') === 'asc'" class="material-icons-outlined text-sm">arrow_downward</span>
+                <span x-show="params.get('order_direction') === 'desc'" class="material-icons-outlined text-sm">arrow_upward</span>
+              </button>
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs text-gray-500">
+              <button @click="toggle('modified_at')" type="button" class="flex items-center gap-1 cursor-pointer">
+                <span class="font-medium uppercase">Modified</span>
+                <template x-if="location.pathname && params == '' ">
+                  <span class="material-icons-outlined text-sm">arrow_downward</span>
+                </template>
+                <span x-show="params.get('order_direction') === 'asc'" class="material-icons-outlined text-sm">arrow_downward</span>
+                <span x-show="params.get('order_direction') === 'desc'" class="material-icons-outlined text-sm">arrow_upward</span>
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          {{- range .Data.Users}}
+          <tr class="bg-white hover:bg-gray-50">
+            {{- template "user-row" dict "Site" $.Site "User" .}}
+          </tr>
+          {{- end}}
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <nav class="bg-white px-4 py-3 flex items-center justify-end border-t border-gray-200 border-b">
+        <div class="sm:block">
+          <p class="text-sm text-gray-500">
+            <span class="font-medium">1</span>
+            -
+            <span class="font-medium">10</span>
+            of
+            <span class="font-medium">20</span>
+          </p>
+        </div>
+
+        <!-- Rows per page dropdown -->
+        <div class="ml-8 flex items-center">
+          <label for="location" class="text-sm font-small text-gray-500">Rows per Page</label>
+          <div class="flex-1 ml-4">
+            <select id="location" name="location"
+              class="mt-1 block w-full pl-1  py-2 text-base ring-1 ring-gray-300 border-gray-500 text-gray-500 focus:outline-none sm:text-sm rounded-md">
+            <option selected>50</option>
+            <option>100</option>
+            <option>250</option>
+          </select>
+          </div>
+        </div>
+
+        <div class="flex sm:justify-end ml-8">
+          <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+            <span class="sr-only">Previous</span>
+            <span class="material-icons-outlined">chevron_left</span>
+          </a>
+          <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+            <span class="sr-only">Next</span>
+            <span class="material-icons-outlined">chevron_right</span>
+          </a>
+        </div>
+      </nav>
+    </div>
   </div>
 
   <!-- Unconfirmed users -->
-  <div x-show="openTab === 2" class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-    <table class="min-w-full divide-y divide-gray-200">
-      <thead>
-        <tr>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            Token
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            Email
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            Role
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            Status
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            Created
-          </th>
-          <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-            Modified
-          </th>
-        </tr>
-      </thead>
-      <tbody class="bg-white divide-y divide-gray-200">
-        {{- range .Data.SignupTokens}}
-        <tr class="bg-white hover:bg-gray-50">
-          {{- template "signup-token-row" .}}
-        </tr>
-        {{- end}}
-      </tbody>
-    </table>
+  <div x-show="openTab === 2" class="my-10 overflow-auto shadow border-gray-200 sm:rounded-lg">
+    <div class="inline-block min-w-full">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead>
+          <tr>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+              Token
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+              Email
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+              Role
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+              Status
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+              Created
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+              Modified
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          {{- range .Data.SignupTokens}}
+          <tr class="bg-white hover:bg-gray-50">
+            {{- template "signup-token-row" .}}
+          </tr>
+          {{- end}}
+        </tbody>
+      </table>
+      <!-- Pagination -->
+      <nav class="bg-white px-4 py-3 flex items-center justify-end border-t border-gray-200 border-b">
+        <div class="sm:block">
+          <p class="text-sm text-gray-500">
+            <span class="font-medium">1</span>
+            -
+            <span class="font-medium">10</span>
+            of
+            <span class="font-medium">20</span>
+          </p>
+        </div>
+
+        <!-- Rows per page dropdown -->
+        <div class="ml-8 flex items-center">
+          <label for="location" class="text-sm font-small text-gray-500">Rows per Page</label>
+          <div class="flex-1 ml-4">
+            <select id="location" name="location"
+              class="mt-1 block w-full pl-1  py-2 text-base ring-1 ring-gray-300 border-gray-500 text-gray-500 focus:outline-none sm:text-sm rounded-md">
+            <option selected>50</option>
+            <option>100</option>
+            <option>250</option>
+          </select>
+          </div>
+        </div>
+
+        <div class="flex sm:justify-end ml-8">
+          <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+            <span class="sr-only">Previous</span>
+            <span class="material-icons-outlined">chevron_left</span>
+          </a>
+          <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+            <span class="sr-only">Next</span>
+            <span class="material-icons-outlined">chevron_right</span>
+          </a>
+        </div>
+      </nav>
+    </div>
   </div>
 </div>
-
 {{- end}}
