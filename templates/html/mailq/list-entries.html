@@ -1,0 +1,26 @@
+{{- define "title"}}Mail queue{{ end }}
+{{- define "content"}}
+
+<table>
+<tr>
+  <th>ID</th>
+  <th>Status</th>
+  <th>Email To</th>
+  <th>Subject</th>
+  <th>Created date</th>
+  <th>Sent date</th>
+</tr>
+{{- range .Data.Entries}}
+<tr>
+  <td><a href="/mailq/{{.ID}}">{{.ID}}</a></td>
+  <td>{{.Status}}</td>
+  <td>{{.EmailTo}}</td>
+  <td>{{.Subject}}</td>
+  <td>{{admintime .CreatedAt}}</td>
+  <td>{{sentAt .SentAt}}</td>
+</tr>
+{{- end}}
+
+</table>
+
+{{- end -}}

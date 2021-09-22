@@ -1,0 +1,59 @@
+{{- define "title"}}View Mail Queue Entry{{end}}
+{{- define "content"}}
+
+<h1>View</h1>
+
+{{- with .Data.Entry}}
+<table>
+<tr>
+  <td>ID</td>
+  <td>{{.ID}}</td>
+</tr>
+<tr>
+  <td>Email To</td>
+  <td>{{.EmailTo}}</td>
+</tr>
+<tr>
+  <td>Priority</td>
+  <td>{{.Priority}}</td>
+</tr>
+<tr>
+  <td>Status</td>
+  <td>{{.Status}}</td>
+</tr>
+<tr>
+  <td>EmailFrom</td>
+  <td>{{.EmailFrom}}</td>
+</tr>
+<tr>
+  <td>EmailReplyTo</td>
+  <td>{{.EmailReplyTo}}</td>
+</tr>
+<tr>
+  <td>Subject</td>
+  <td>{{.Subject}}</td>
+</tr>
+<tr>
+  <td>Text</td>
+  <td><textarea readonly>{{.Text}}</textarea></td>
+</tr>
+<tr>
+  <td>HTML</td>
+  <td><textarea readonly>{{.HTML}}</textarea></td>
+</tr>
+<tr>
+  <td>Created date</td>
+  <td>{{admintime .CreatedAt}}</td>
+</tr>
+<tr>
+  <td>Sent date</td>
+  <td>{{sentAt .SentAt}}</td>
+</tr>
+<tr>
+  <td>Modified date</td>
+  <td>{{admintime .ModifiedAt}}</td>
+</tr>
+</table>
+{{- end}}
+
+{{- end}}
