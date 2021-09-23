@@ -1,60 +1,68 @@
 {{- define "user-job-row"}}
 {{- with .Job}}
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.ID}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.ID}}" class="clickable-row">{{.ID}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.ID}}" class="clickable-row">
     {{- if .Visible}}
     <span class="material-icons-outlined text-green-700">visibility</span>
-    {{else}}
+    {{- else}}
     <span class="material-icons-outlined text-gray-200">visibility_off</span>
-    {{end}}
+    {{- end}}
     {{- if .Searchable}}
     <span class="material-icons-outlined text-green-700">search</span>
-    {{else}}
+    {{- else}}
     <span class="material-icons-outlined text-gray-200">search</span>
-    {{end}}
-    {{- if .Pinned}}
-    <span class="material-icons-outlined text-green-700">push_pin</span>
-    {{else -}}
-    <span class="material-icons-outlined text-gray-200">push_pin</span>
     {{- end}}
     {{- if .Filled}}
     <span class="material-icons-outlined text-green-700">lock</span>
-    {{else}}
+    {{- else}}
     <span class="material-icons-outlined text-gray-200">lock</span>
-    {{end}}
-  </span>
+    {{- end}}
+  </a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.CompanyName}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.ID}}" class="clickable-row">{{.CompanyName}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Location}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.ID}}" class="clickable-row">{{.Location}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Title}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.ID}}" class="clickable-row">{{.Title}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{currencySymbol .SalaryCurrency}}{{moneyK .SalaryMin}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.ID}}" class="clickable-row">
+    {{currencySymbol .SalaryCurrency}} {{moneyK .SalaryMin}} - {{moneyK .SalaryMax}} / {{.SalaryUnit}}
+  </a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{moneyK .SalaryMax}}</span>
+<td class="whitespace-nowrap">
+ <a href="/jobs/{{.ID}}" class="clickable-row">
+  <div class="flex items-center">
+    {{- if .Pinned}}
+    <span class="material-icons-outlined text-green-700 text-xl">push_pin</span>
+    {{- else}}
+    <span class="material-icons-outlined text-gray-200 text-xl">push_pin</span>
+    {{- end}}
+    {{- if eq .HLType "custom" }}
+    <span class="inline-block px-2 py-2" style="background-color: {{.HLCol}}"></span>
+    {{- end}}
+    {{- if eq .HLType "standard" }}
+    <span class="inline-block bg-yellow-100 px-2 py-2"></span>
+    {{- end}}
+    {{- if eq .HLType "" }}
+    <span class="inline-block border border-gray-500 px-2 py-2"></span>
+    {{- end}}
+    <img src="{{$.Site.BaseURL}}/{{.LogoURL}}" class="w-4 h-4 mx-1">
+  </div>
+  </a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.SalaryUnit}}</span>
-</td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.HLType}}</span>
-</td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900 rounded" style="background-color: {{.HLCol}};">{{.HLCol}}</span>
-</td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <a target="_blank" href="{{$.Site.BaseURL}}/jobs/{{.Slug}}" class="inline-flex items-center rounded text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500">
+<td class="relative px-6 py-4 whitespace-nowrap">
+  <a target="_blank" href="{{$.Site.BaseURL}}/jobs/{{.Slug}}" class="relative z-10
+    inline-flex items-center rounded text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500">
     <svg class="w-6 h-6 stroke-current stroke-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
   </a>
+  <a href="#" class="absolute inset-0"></a>
 </td>
 {{- end}}
 {{- end}}

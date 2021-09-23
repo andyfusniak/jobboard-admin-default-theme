@@ -6,19 +6,19 @@
   <a href="/jobs/{{.Job.ID}}" class="clickable-row">
     {{- if .Job.Visible}}
     <span class="material-icons-outlined text-green-700">visibility</span>
-    {{else}}
+    {{- else}}
     <span class="material-icons-outlined text-gray-200">visibility_off</span>
-    {{end}}
+    {{- end}}
     {{- if .Job.Searchable}}
     <span class="material-icons-outlined text-green-700">search</span>
-    {{else}}
+    {{- else}}
     <span class="material-icons-outlined text-gray-200">search</span>
-    {{end}}
+    {{- end}}
     {{- if .Job.Filled}}
     <span class="material-icons-outlined text-green-700">lock</span>
-    {{else}}
+    {{- else}}
     <span class="material-icons-outlined text-gray-200">lock</span>
-    {{end}}
+    {{- end}}
   </a>
 </td>
 <td class="whitespace-nowrap">
@@ -43,13 +43,13 @@
       {{else -}}
       <span class="material-icons-outlined text-gray-200 text-xl">push_pin</span>
       {{- end}}
-      {{if eq .Job.HLType "custom" }}
+      {{- if eq .Job.HLType "custom" }}
       <span class="inline-block px-2 py-2" style="background-color: {{.Job.HLCol}}"></span>
       {{- end}}
-      {{if eq .Job.HLType "standard" }}
+      {{- if eq .Job.HLType "standard" }}
       <span class="inline-block bg-yellow-100 px-2 py-2"></span>
       {{- end}}
-      {{if eq .Job.HLType "" }}
+      {{- if eq .Job.HLType "" }}
       <span class="inline-block border border-gray-500 px-2 py-2"></span>
       {{- end}}
       <img src="{{$.Site.BaseURL}}/{{.Job.LogoURL}}" class="w-4 h-4 mx-1">
