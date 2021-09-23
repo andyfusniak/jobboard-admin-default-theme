@@ -1,11 +1,9 @@
 {{- define "job-row"}}
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-indigo-700 hover:text-indigo-500 hover:underline">
-    <a href="/users/{{.Job.UserID}}">{{fkmapper .UserMap .Job.UserID}}</a>
-  </span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.Job.ID}}" class="clickable-row">{{fkmapper .UserMap .Job.UserID}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.Job.ID}}" class="clickable-row">
     {{- if .Job.Visible}}
     <span class="material-icons-outlined text-green-700">visibility</span>
     {{else}}
@@ -16,40 +14,51 @@
     {{else}}
     <span class="material-icons-outlined text-gray-200">search</span>
     {{end}}
-    {{- if .Job.Pinned}}
-    <span class="material-icons-outlined text-green-700">push_pin</span>
-    {{else -}}
-    <span class="material-icons-outlined text-gray-200">push_pin</span>
-    {{- end}}
     {{- if .Job.Filled}}
     <span class="material-icons-outlined text-green-700">lock</span>
     {{else}}
     <span class="material-icons-outlined text-gray-200">lock</span>
     {{end}}
-  </span>
+  </a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Job.CompanyName}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.Job.ID}}" class="clickable-row">{{.Job.CompanyName}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Job.Location}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.Job.ID}}" class="clickable-row">{{.Job.Location}}</a>
 </td>
-<td class="px-6 py-4 text-sm whitespace-nowrap">
-  <span class="tracking-tight text-sm text-indigo-700 hover:text-indigo-500 hover:underline"><a href="/jobs/{{.Job.ID}}">{{.Job.Title}}</a></span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.Job.ID}}" class="clickable-row">{{.Job.Title}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{currencySymbol .Job.SalaryCurrency}}{{moneyK .Job.SalaryMin}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.Job.ID}}" class="clickable-row">
+    {{currencySymbol .Job.SalaryCurrency}} {{moneyK .Job.SalaryMin}} - {{moneyK .Job.SalaryMax}} / {{.Job.SalaryUnit}}
+  </a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{moneyK .Job.SalaryMax}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.Job.ID}}" class="clickable-row">
+    <div class="flex items-center">
+      {{- if .Job.Pinned}}
+      <span class="material-icons-outlined text-green-700 text-xl">push_pin</span>
+      {{else -}}
+      <span class="material-icons-outlined text-gray-200 text-xl">push_pin</span>
+      {{- end}}
+      {{if eq .Job.HLType "custom" }}
+      <span class="inline-block px-2 py-2" style="background-color: {{.Job.HLCol}}"></span>
+      {{- end}}
+      {{if eq .Job.HLType "standard" }}
+      <span class="inline-block bg-yellow-100 px-2 py-2"></span>
+      {{- end}}
+      {{if eq .Job.HLType "" }}
+      <span class="inline-block border border-gray-500 px-2 py-2"></span>
+      {{- end}}
+      <img src="{{$.Site.BaseURL}}/{{.Job.LogoURL}}" class="w-4 h-4 mx-1">
+    </div>
+  </a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Job.SalaryUnit}}</span>
-</td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Job.HLType}}</span>
-</td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight rounded text-sm text-gray-900" style="background-color: {{.Job.HLCol}};">{{.Job.HLCol}}</span>
+<td class="whitespace-nowrap">
+  <a href="/jobs/{{.Job.ID}}" class="clickable-row">
+    {{.Job.CreatedAt}}
+  </a>
 </td>
 {{- end}}

@@ -33,22 +33,22 @@
         {{- range .Data.Entries}}
         <tr class="bg-white hover:bg-gray-50">
           <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 tracking-tight text-sm text-gray-900">{{.ID}}</a>
+            <a href="/mailq/{{.ID}}" class="clickable-row">{{.ID}}</a>
           </td>
           <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 tracking-tight text-sm text-gray-900">{{.Status}}</a>
+            <a href="/mailq/{{.ID}}" class="clickable-row">{{.Status}}</a>
           </td>
           <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 tracking-tight text-sm text-gray-900">{{.EmailTo}}</a>
+            <a href="/mailq/{{.ID}}" class="clickable-row">{{.EmailTo}}</a>
           </td>
           <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 tracking-tight text-sm text-gray-900">{{.Subject}}</a>
+            <a href="/mailq/{{.ID}}" class="clickable-row">{{.Subject}}</a>
           </td>
           <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 tracking-tight text-sm text-gray-900">{{admintime .CreatedAt}}</a>
+            <a href="/mailq/{{.ID}}" class="clickable-row">{{admintime .CreatedAt}}</a>
           </td>
           <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 tracking-tight text-sm text-gray-900">{{sentAt .SentAt}}</a>
+            <a href="/mailq/{{.ID}}" class="clickable-row">{{sentAt .SentAt}}</a>
           </td>
         </tr>
         {{- end}}

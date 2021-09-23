@@ -1,19 +1,17 @@
 {{- define "user-row"}}
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-indigo-700 hover:text-indigo-500 hover:underline">
-    <a href="/users/{{.User.ID}}">{{.User.Email}}</a>
-  </span>
+<td class="whitespace-nowrap">
+  <a href="/users/{{.User.ID}}" class="clickable-row">{{.User.Email}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.User.Role}}</span>
+<td class="whitespace-nowrap">
+  <a href="/users/{{.User.ID}}" class="clickable-row">{{.User.Role}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.User.Metadata}}</span>
+<td class="whitespace-nowrap">
+  <a href="/users/{{.User.ID}}" class="clickable-row">{{.User.Metadata}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{admintime .User.CreatedAt}}</span>
+<td class="whitespace-nowrap">
+  <a href="/users/{{.User.ID}}" class="clickable-row">{{admintime .User.CreatedAt}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{admintime .User.ModifiedAt}}</span>
+<td class="whitespace-nowrap">
+  <a href="/users/{{.User.ID}}" class="clickable-row">{{admintime .User.ModifiedAt}}</a>
 </td>
 {{- end}}
