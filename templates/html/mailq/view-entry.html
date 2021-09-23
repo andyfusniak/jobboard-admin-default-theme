@@ -1,59 +1,133 @@
 {{- define "title"}}View Mail Queue Entry{{end}}
 {{- define "content"}}
+<div class="max-w-3xl px-4 sm:px-6 lg:px-8">
+  <!-- Breadcrumb -->
+  <nav class="flex lg:hidden mt-4">
+    <ol role="list" class="flex space-x-4">
+      <li>
+        <div>
+          <a href="/" class="text-gray-400 hover:text-gray-500">
+            <span class="material-icons-outlined h-5 w-5">home</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <span class="material-icons-outlined">chevron_right</span>
+          <a href="/mailq" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Email</a>
+        </div>
+      </li>
+    </ol>
+  </nav>
 
-<h1>View</h1>
 
-{{- with .Data.Entry}}
-<table>
-<tr>
-  <td>ID</td>
-  <td>{{.ID}}</td>
-</tr>
-<tr>
-  <td>Email To</td>
-  <td>{{.EmailTo}}</td>
-</tr>
-<tr>
-  <td>Priority</td>
-  <td>{{.Priority}}</td>
-</tr>
-<tr>
-  <td>Status</td>
-  <td>{{.Status}}</td>
-</tr>
-<tr>
-  <td>EmailFrom</td>
-  <td>{{.EmailFrom}}</td>
-</tr>
-<tr>
-  <td>EmailReplyTo</td>
-  <td>{{.EmailReplyTo}}</td>
-</tr>
-<tr>
-  <td>Subject</td>
-  <td>{{.Subject}}</td>
-</tr>
-<tr>
-  <td>Text</td>
-  <td><textarea readonly>{{.Text}}</textarea></td>
-</tr>
-<tr>
-  <td>HTML</td>
-  <td><textarea readonly>{{.HTML}}</textarea></td>
-</tr>
-<tr>
-  <td>Created date</td>
-  <td>{{admintime .CreatedAt}}</td>
-</tr>
-<tr>
-  <td>Sent date</td>
-  <td>{{sentAt .SentAt}}</td>
-</tr>
-<tr>
-  <td>Modified date</td>
-  <td>{{admintime .ModifiedAt}}</td>
-</tr>
-</table>
-{{- end}}
 
+
+  <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Email Details</h1>
+
+  {{- with .Data.Entry}}
+  <div class="mt-16 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            ID
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.ID}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Email To
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.EmailTo}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Priority
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Priority}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Status
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Status}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Email From
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.EmailFrom}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Email Reply To
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.EmailReplyTo}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Subject
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Subject}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Text
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Text}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            HTML
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.HTML}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Created Date
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .CreatedAt}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Sent Date
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{sentAt .SentAt}}
+          </dd>
+        </div>
+         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Modified Date
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{admintime .ModifiedAt}}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  {{- end}}
+</div>
 {{- end}}
