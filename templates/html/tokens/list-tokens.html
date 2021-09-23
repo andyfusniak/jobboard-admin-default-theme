@@ -1,0 +1,22 @@
+{{- define "title"}}Tokens{{end}}
+{{- define "content"}}
+
+<table>
+<tr>
+  <th>ID</th>
+  <th>User ID</th>
+  <th>Kind</th>
+  <th>Email</th>
+  <th>Role</th>
+  <th>Status</th>
+  <th>Token</th>
+  <th>Created date</th>
+  <th>Last modified date</th>
+</tr>
+
+{{- range .Data.Tokens}}
+{{- template "token-row" .}}
+{{- end}}
+</table>
+
+{{- end}}

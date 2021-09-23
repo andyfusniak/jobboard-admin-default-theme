@@ -179,9 +179,9 @@
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-          {{- range .Data.SignupTokens}}
+          {{- range .Data.Tokens}}
           <tr class="bg-white hover:bg-gray-50">
-            {{- template "signup-token-row" .}}
+            {{- template "token-row" .}}
           </tr>
           {{- end}}
         </tbody>

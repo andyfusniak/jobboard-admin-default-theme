@@ -1,0 +1,13 @@
+{{- define "token-row"}}
+<tr>
+  <td>{{.ID}}</td>
+  <td>{{.UserID}}</td>
+  <td>{{.Kind}}</td>
+  <td>{{.Email}}</td>
+  <td>{{.Role}}</td>
+  <td>{{.Status}}</td>
+  <td>{{slice .Token 0 8}}...</td>
+  <td>{{admintime .CreatedAt}}</td>
+  <td>{{admintime .ModifiedAt}}</td>
+</tr>
+{{- end}}
