@@ -121,6 +121,7 @@ class="px-4">
                <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
+              {{.HLType}}
               {{else}}
               <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -181,7 +182,7 @@ class="px-4">
               Salary
             </dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              &#163;{{moneyK .SalaryMin}} - &#163;{{moneyK .SalaryMax}} {{.SalaryCurrency}} {{.SalaryUnit}}
+              <span class="text-gray-500">&#163;</span>{{moneyK .SalaryMin}} - {{moneyK .SalaryMax}} {{.SalaryCurrency}} {{.SalaryUnit}}
             </dd>
           </div>
           <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

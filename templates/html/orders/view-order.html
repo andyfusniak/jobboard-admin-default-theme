@@ -1,6 +1,24 @@
 {{- define "title"}}Order{{end}}
 {{- define "content"}}
 <div class="max-w-3xl px-4 sm:px-6 lg:px-8">
+  <!-- Breadcrumb -->
+  <nav class="flex lg:hidden mt-4">
+    <ol role="list" class="flex space-x-4">
+      <li>
+        <div>
+          <a href="/" class="text-gray-400 hover:text-gray-500">
+            <span class="material-icons-outlined h-5 w-5">home</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <span class="material-icons-outlined">chevron_right</span>
+          <a href="/orders" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Orders</a>
+        </div>
+      </li>
+    </ol>
+  </nav>
   <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Order Details</h1>
 
 <!-- Order details card -->
@@ -78,7 +96,16 @@
             Highlight Type
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{if .HLType}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
             {{.HLType}}
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{end}}
           </dd>
         </div>
         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -86,7 +113,15 @@
             Highlight Colour
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            <span class="tracking-tight text-sm text-gray-900 rounded" style="background-color: {{.HLCol}};">{{.HLCol}}</span>
+            {{if .HLCol}}
+            <span class="tracking-tight rounded text-sm text-gray-900"
+              style="background-color: {{.HLCol}};">{{.HLCol}}
+            </span>
+            {{else}}
+            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            {{end}}
           </dd>
         </div>
         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

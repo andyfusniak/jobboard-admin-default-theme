@@ -32,7 +32,7 @@
 </td>
 <td class="whitespace-nowrap">
   <a href="/jobs/{{.Job.ID}}" class="clickable-row">
-    {{currencySymbol .Job.SalaryCurrency}} {{moneyK .Job.SalaryMin}} - {{moneyK .Job.SalaryMax}} / {{.Job.SalaryUnit}}
+    <span class="text-gray-500">{{currencySymbol .Job.SalaryCurrency}}</span>{{moneyK .Job.SalaryMin}} - {{moneyK .Job.SalaryMax}} / {{.Job.SalaryUnit}}
   </a>
 </td>
 <td class="whitespace-nowrap">
