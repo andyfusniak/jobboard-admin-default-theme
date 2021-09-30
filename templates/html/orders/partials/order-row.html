@@ -33,11 +33,11 @@
 
       {{.HLType}}
 
-      {{if .Logo -}}
+      {{- if .LogoURL}}
       <span class="material-icons-outlined text-green-700">image</span>
-      {{else -}}
+      {{- else}}
       <span class="material-icons-outlined text-gray-200">image</span>
-      {{end -}}
+      {{- end}}
     </div>
   </a>
 </td>
