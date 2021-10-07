@@ -1,0 +1,10 @@
+<h1>SignIn</h1>
+
+<form method="POST" action="/auth/signin">
+<input type="hidden" name="successurl" value="{{.Data.SuccessURL}}">
+<input type="text" name="email" value="{{.Data.Email}}">
+<input type="text" name="password" value="{{.Data.Password}}">
+
+<button>Signin</button>
+
+</form>
