@@ -1,0 +1,27 @@
+{{- define "title"}}System : Options{{end}}
+{{- define "system-content"}}
+
+<h1 class="text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Options</h1>
+
+<table>
+<tr>
+  <th>Name</th>
+  <th>Value</th>
+  <th>action</th>
+</tr>
+
+{{- range .Data.Options}}
+<tr>
+  <td>{{.Name}}</td>
+  <td>{{.Value}}</td>
+  <td><a href="/system/options/{{.ID}}/edit">[edit]</a></td>
+</tr>
+
+{{- printf "%#v" .}}
+
+{{- end}}
+
+</table>
+
+
+{{- end}}

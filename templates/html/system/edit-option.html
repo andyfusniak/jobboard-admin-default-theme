@@ -1,0 +1,24 @@
+{{- define "title"}}System : Edit Option{{end}}
+{{- define "system-content"}}
+{{- printf "%#v" .Data}}
+<form method="POST" action="/system/options/edit-option">
+<input type="hidden" name="id" value="{{.Data.FormID}}">
+<table>
+  <tr>
+    <td><label for="name">Name</label></td>
+    <td><input type="text" readonly value="{{.Data.FormName}}"></td>
+  </tr>
+  <tr>
+    <td><label for="value">Value</label></td>
+    <td><input type="text" name="value" value="{{.Data.FormValue}}"></td>
+    {{- if ne .Data.ErrFormValue ""}}
+    <span class="text-red-600">{{.Data.ErrFormValue}}</span>
+    {{- end}}
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><button>Save</button></td>
+  </tr>
+</table>
+</form>
+{{- end}}
