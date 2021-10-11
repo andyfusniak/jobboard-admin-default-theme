@@ -10,7 +10,7 @@
   </tr>
   <tr>
     <td><label for="value">Value</label></td>
-    <td><input type="text" name="value" value="{{.Data.FormValue}}"></td>
+    <td><textarea name="value">{{.Data.FormValue}}</textarea></td>
     {{- if ne .Data.ErrFormValue ""}}
     <span class="text-red-600">{{.Data.ErrFormValue}}</span>
     {{- end}}

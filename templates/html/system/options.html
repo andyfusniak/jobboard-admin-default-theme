@@ -13,15 +13,16 @@
 {{- range .Data.Options}}
 <tr>
   <td>{{.Name}}</td>
-  <td>{{.Value}}</td>
+  <td>
+    {{- if gt (len .Value) 10}}
+    {{- slice .Value 0 10}} ...
+    {{- else}}
+    {{- .Value}}
+    {{- end}}
+  </td>
   <td><a href="/system/options/{{.ID}}/edit">[edit]</a></td>
 </tr>
-
-{{- printf "%#v" .}}
-
 {{- end}}
-
 </table>
-
 
 {{- end}}
