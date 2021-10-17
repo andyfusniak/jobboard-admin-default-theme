@@ -1,23 +1,49 @@
 {{- define "system-nav"}}
 <nav class="space-y-1">
-  <a href="/system" class="border-l border-indigo-600 text-indigo-600 hover:text-indigo-400 items-center px-3 py-2 text-sm font-semibold">
+  {{if eq .Page.URLPath "/system"}}
+  <a href="/system" class="system-nav system-nav--active">
     <span class="truncate">Overview</span>
   </a>
-
-  <a href="/system/options" class="text-gray-600 hover:text-indigo-400 flex items-center px-3 py-2 text-sm font-medium">
+  {{- else}}
+  <a href="/system" class="system-nav system-nav--inactive">
+    <span class="truncate">Overview</span>
+  </a>
+  {{- end}}
+  {{if eq .Page.URLPath "/system/options"}}
+  <a href="/system/options" class="system-nav system-nav--active">
     <span class="truncate">Options</span>
   </a>
-
-  <a href="/system/config" class="text-gray-600 hover:text-indigo-400 flex items-center px-3 py-2 text-sm font-medium">
+  {{- else}}
+  <a href="/system/options" class="system-nav system-nav--inactive">
+    <span class="truncate">Options</span>
+  </a>
+  {{- end}}
+  {{if eq .Page.URLPath "/system/config"}}
+  <a href="/system/config" class="system-nav system-nav--active">
     <span class="truncate">Config</span>
   </a>
-
-  <a href="/system/skills" class="text-gray-600 hover:text-indigo-400 flex items-center px-3 py-2 text-sm font-medium">
+  {{- else}}
+  <a href="/system/config" class="system-nav system-nav--inactive">
+    <span class="truncate">Config</span>
+  </a>
+  {{- end}}
+  {{if eq .Page.URLPath "/system/skills"}}
+  <a href="/system/skills" class="system-nav system-nav--active">
     <span class="truncate">Skills</span>
   </a>
-
-  <a href="/system/database" class="text-gray-600 hover:text-indigo-400 flex items-center px-3 py-2 text-sm font-medium">
+  {{- else}}
+  <a href="/system/skills" class="system-nav system-nav--inactive">
+    <span class="truncate">Skills</span>
+  </a>
+  {{- end}}
+  {{if eq .Page.URLPath "/system/database"}}
+  <a href="/system/database" class="system-nav system-nav--active">
     <span class="truncate">Database</span>
   </a>
+  {{- else}}
+  <a href="/system/database" class="system-nav system-nav--inactive">
+    <span class="truncate">Database</span>
+  </a>
+  {{- end}}
 </nav>
 {{- end}}
