@@ -1,0 +1,92 @@
+{{- define "title"}}System : Options{{end}}
+{{- define "system-content"}}
+<h1 class="text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Themes</h1>
+
+<h2>Active Web Theme</h2>
+{{.Data.WebResolvedThemeTag}}
+{{- if .Data.WebThemeNotFound}}
+<p>Options "web_active_theme_tag" points to <strong>{{globalOption "web_active_theme_tag"}}</strong> but this theme is not loaded.</p>
+{{- else}}
+{{- with .Data.ActiveWebTheme}}
+<table>
+<tr>
+  <td><strong>ID</strong></td>
+  <td>{{.ID}}</td>
+</tr>
+<tr>
+  <td><strong>NAME</strong></td>
+  <td>{{.Name}}</td>
+</tr>
+<tr>
+  <td><strong>VERSION</strong></td>
+  <td>{{.Version}}</td>
+</tr>
+<tr>
+  <td><strong>CHECKSUM</strong></td>
+  <td>{{slice .DigestSHA256 0 8}}</td>
+</tr>
+<tr>
+  <td><strong>DESCRIPTION</strong></td>
+  <td>{{.Description}}</td>
+</tr>
+<tr>
+  <td><strong>CREATED AT</strong></td>
+  <td>{{admintime .CreatedAt}}</td>
+</tr>
+</table>
+{{- end}}
+{{- end}}
+
+<hr>
+<h2>Active Admin Theme</h2>
+{{- if .Data.AdminThemeNotFound}}
+<p>Options "admin_active_theme_tag" points to <strong>{{globalOption "admin_active_theme_tag"}}</strong> but this theme is not loaded.</p>
+{{- else}}
+{{- with .Data.ActiveAdminTheme}}
+<table>
+<tr>
+  <td><strong>ID</strong></td>
+  <td>{{.ID}}</td>
+</tr>
+<tr>
+  <td><strong>NAME</strong></td>
+  <td>{{.Name}}</td>
+</tr>
+<tr>
+  <td><strong>VERSION</strong></td>
+  <td>{{.Version}}</td>
+</tr>
+<tr>
+  <td><strong>CHECKSUM</strong></td>
+  <td>{{slice .DigestSHA256 0 8}}</td>
+</tr>
+<tr>
+  <td><strong>DESCRIPTION</strong></td>
+  <td>{{.Description}}</td>
+</tr>
+<tr>
+  <td><strong>CREATED AT</strong></td>
+  <td>{{admintime .CreatedAt}}</td>
+</tr>
+</table>
+{{- end}}
+{{- end}}
+
+<table>
+<tr>
+  <th>Tag</th>
+  <th>Description</th>
+</tr>
+{{- range .Data.Themes}}
+<tr>
+  <td>
+    {{.Name}}:{{.Version}}
+    {{if eq $.Data.WebResolvedThemeTag (print .Name ":" .Version)}} WEB THEME ACTIVE HIGHLIGHT{{end}}
+    {{if eq $.Data.AdminResolvedThemeTag (print .Name ":" .Version)}} ADMIN THEME ACTIVE HIGHLIGHT{{end}}
+  </td>
+  <td>{{.Description}}</td>
+</tr>
+{{- end}}
+</table>
+
+{{- end}}

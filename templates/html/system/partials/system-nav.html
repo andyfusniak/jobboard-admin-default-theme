@@ -18,6 +18,11 @@
     <span class="truncate">Options</span>
   </a>
   {{- end}}
+
+  <a href="/system/themes" class="system-nav system-nav--{{if eq .Page.URLPath "/system/themes"}}active{{else}}inactive{{end}}">
+    <span class="truncate">Themes</span>
+  </a>
+
   {{if eq .Page.URLPath "/system/config"}}
   <a href="/system/config" class="system-nav system-nav--active">
     <span class="truncate">Config</span>
