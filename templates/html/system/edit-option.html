@@ -1,24 +1,45 @@
 {{- define "title"}}System : Edit Option{{end}}
 {{- define "system-content"}}
-{{- printf "%#v" .Data}}
-<form method="POST" action="/system/options/edit-option">
-<input type="hidden" name="id" value="{{.Data.FormID}}">
-<table>
-  <tr>
-    <td><label for="name">Name</label></td>
-    <td><input type="text" readonly value="{{.Data.FormName}}"></td>
-  </tr>
-  <tr>
-    <td><label for="value">Value</label></td>
-    <td><textarea name="value">{{.Data.FormValue}}</textarea></td>
-    {{- if ne .Data.ErrFormValue ""}}
-    <span class="text-red-600">{{.Data.ErrFormValue}}</span>
-    {{- end}}
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><button>Save</button></td>
-  </tr>
-</table>
-</form>
+<h1 class="text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Edit Options</h1>
+
+<div class="max-w-2xl">
+  <form method="POST" action="/system/options/edit-option" class="space-y-8">
+    <input type="hidden" name="id" value="{{.Data.FormID}}">
+    <div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:items-start sm:pt-5">
+          <label for="name" class="block text-lg font-medium text-gray-700 sm:mt-px sm:pt-2">
+            Name
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <input type="text" name="name" readonly value="{{.Data.FormName}}" class="max-w-lg block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+          </div>
+        </div>
+
+        <div class="sm:grid sm:grid-cols-3 sm:items-start pt-5">
+          <label for="value" class="block text-lg font-medium text-gray-700 sm:mt-px sm:pt-2">
+            Value
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <textarea id="value" name="value" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md">{{.Data.FormValue}}</textarea>
+            {{- if ne .Data.ErrFormValue ""}}
+            <span class="text-red-600 mt-1 text-sm">{{.Data.ErrFormValue}}</span>
+            {{- end}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5">
+      <div class="flex justify-end">
+        <a href="/system/options" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Cancel
+        </a>
+        <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 {{- end}}
