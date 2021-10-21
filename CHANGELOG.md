@@ -1,5 +1,5 @@
 # CHANGELOG
-## 0.3.0 (Tue, 21 Oct 21 3.29pm)
+## 0.3.1 (Tue, 21 Oct 21 3.29pm)
 + Theme upload templates compatible with jobboard-web v0.12.0
 + npm deps updated
 + build.sh added
