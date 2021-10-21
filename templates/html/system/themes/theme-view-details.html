@@ -1,0 +1,51 @@
+{{- define "title"}}System : View Theme Details{{end}}
+{{- define "system-content"}}
+<h2>Template details</h2>
+{{- with .Data.Theme}}
+<table>
+  <tr>
+    <td>ID</td>
+    <td>{{.ID}}</td>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>{{.Name}}</td>
+  </tr>
+  <tr>
+    <td>Version</td>
+    <td>{{.Version}}</td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>{{.Description}}</td>
+  </tr>
+  <tr>
+    <td>Checksum</td>
+    <td>{{slice .DigestSHA256 0 8}}</td>
+  </tr>
+  <tr>
+    <td>Created at</td>
+    <td>{{admintime .CreatedAt}}</td>
+  </tr>
+</table>
+{{- end }}
+
+<h2>Files</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Checksum</th>
+    <th>Content Type</th>
+  </tr>
+
+{{- range .Data.Files}}
+  <tr>
+    <td>{{.Path}}</td>
+    <td>{{slice .DigestSHA256 0 8}}</td>
+    <td>{{.ContentType}}</td>
+  </tr>
+{{- end}}
+</table>
+
+{{- end}}
+

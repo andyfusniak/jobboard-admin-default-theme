@@ -1,0 +1,8 @@
+{{- define "title"}}System : Upload Theme{{end}}
+{{- define "system-content"}}
+
+<form enctype="multipart/form-data" method="POST" action="/system/themes/upload">
+  <input type="file" name="theme">
+  <button>Upload</button>
+</form>
+{{- end}}
