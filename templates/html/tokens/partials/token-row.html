@@ -1,29 +1,29 @@
 {{- define "token-row"}}
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.ID}}</span>
+  <span class="td-text">{{.ID}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.UserID}}</span>
+  <span class="td-text">{{.UserID}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Kind}}</span>
+  <span class="td-text">{{.Kind}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Email}}</span>
+  <span class="td-text">{{.Email}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Role}}</span>
+  <span class="td-text">{{.Role}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Status}}</span>
+  <span class="td-text">{{.Status}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{slice .Token 0 8}}...</span>
+  <span class="td-text">{{slice .Token 0 8}}...</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{admintime .CreatedAt}}</span>
+  <span class="td-text">{{admintime .CreatedAt}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{admintime .ModifiedAt}}</span>
+  <span class="td-text">{{admintime .ModifiedAt}}</span>
 </td>
 {{- end}}

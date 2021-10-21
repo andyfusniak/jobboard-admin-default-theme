@@ -1,17 +1,17 @@
 {{- define "user-row"}}
 <td class="whitespace-nowrap">
-  <a href="/users/{{.User.ID}}" class="clickable-row">{{.User.Email}}</a>
+  <a href="/users/{{.User.ID}}" class="block px-6 py-4 td-text">{{.User.Email}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/users/{{.User.ID}}" class="clickable-row">{{.User.Role}}</a>
+  <a href="/users/{{.User.ID}}" class="block px-6 py-4 td-text">{{.User.Role}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/users/{{.User.ID}}" class="clickable-row">{{.User.Metadata}}</a>
+  <a href="/users/{{.User.ID}}" class="block px-6 py-4 td-text">{{.User.Metadata}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/users/{{.User.ID}}" class="clickable-row">{{admintime .User.CreatedAt}}</a>
+  <a href="/users/{{.User.ID}}" class="block px-6 py-4 td-text">{{admintime .User.CreatedAt}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/users/{{.User.ID}}" class="clickable-row">{{admintime .User.ModifiedAt}}</a>
+  <a href="/users/{{.User.ID}}" class="block px-6 py-4 td-text">{{admintime .User.ModifiedAt}}</a>
 </td>
 {{- end}}

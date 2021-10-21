@@ -1,17 +1,17 @@
 {{- define "source-row"}}
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.ID}}</span>
+  <span class="td-text">{{.ID}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Name}}</span>
+  <span class="td-text">{{.Name}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{.Short}}</span>
+  <span class="td-text">{{.Short}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{admintime .CreatedAt}}</span>
+  <span class="td-text">{{admintime .CreatedAt}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="tracking-tight text-sm text-gray-900">{{admintime .ModifiedAt}}</span>
+  <span class="td-text">{{admintime .ModifiedAt}}</span>
 </td>
 {{- end}}

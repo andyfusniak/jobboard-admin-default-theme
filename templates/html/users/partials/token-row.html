@@ -1,20 +1,20 @@
 {{- define "token-row"}}
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Token}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="td-text">{{.Token}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Email}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="td-text">{{.Email}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Role}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="td-text">{{.Role}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{.Status}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="td-text">{{.Status}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{admintime .CreatedAt}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="td-text">{{admintime .CreatedAt}}</span>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-  <span class="tracking-tight">{{admintime .ModifiedAt}}</span>
+<td class="px-6 py-4 whitespace-nowrap">
+  <span class="td-text">{{admintime .ModifiedAt}}</span>
 </td>
 {{- end}}

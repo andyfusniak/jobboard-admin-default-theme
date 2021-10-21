@@ -1,21 +1,21 @@
 {{- define "order-row"}}
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="clickable-row">{{.ID}}</a>
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{.ID}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="clickable-row">{{admintime .StartAt}}</a>
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .StartAt}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="clickable-row">{{admintime .EndAt}}</a>
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .EndAt}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="clickable-row">{{.Status}}</a>
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{.Status}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="clickable-row">{{.Kind}}</a>
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{.Kind}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="clickable-row">
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">
     <div class="flex items-center">
       {{- if .Pinned}}
       <span class="material-icons-outlined text-green-700 text-xl">push_pin</span>
@@ -42,9 +42,9 @@
   </a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="clickable-row">{{admintime .CreatedAt}}</a>
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .CreatedAt}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="clickable-row">{{admintime .ModifiedAt}}</a>
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .ModifiedAt}}</a>
 </td>
 {{- end}}

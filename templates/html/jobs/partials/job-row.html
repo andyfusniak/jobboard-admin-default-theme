@@ -1,10 +1,10 @@
 {{- define "job-row"}}
 {{- with .Job}}
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="clickable-row">{{fkmapper $.UserMap .UserID}}</a>
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">{{fkmapper $.UserMap .UserID}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="clickable-row">
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">
     {{- if .Visible}}
     <span class="material-icons-outlined text-green-700">visibility</span>
     {{- else}}
@@ -23,21 +23,21 @@
   </a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="clickable-row">{{.CompanyName}}</a>
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">{{.CompanyName}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="clickable-row">{{.Location}}</a>
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">{{.Location}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="clickable-row">{{.Title}}</a>
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">{{.Title}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="clickable-row">
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">
     <span class="text-gray-500">{{currencySymbol .SalaryCurrency}}</span>{{moneyK .SalaryMin}} - {{moneyK .SalaryMax}} / {{.SalaryUnit}}
   </a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="clickable-row">
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">
     <div class="flex items-center">
       {{- if .Pinned}}
       <span class="material-icons-outlined text-green-700 text-xl">push_pin</span>
@@ -58,7 +58,7 @@
   </a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="clickable-row">
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">
     {{admintime .CreatedAt}}
   </a>
 </td>
