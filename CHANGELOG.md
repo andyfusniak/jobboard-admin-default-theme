@@ -1,5 +1,9 @@
 # CHANGELOG
-## 0.3.1 (Tue, 21 Oct 21 3.29pm)
+
+## 0.4.0 (Thurs, 21 Oct 21 11.24pm)
++ Extract common styling for title, table head, table row
+
+## 0.3.1 (Thurs, 21 Oct 21 3.29pm)
 + Theme upload templates compatible with jobboard-web v0.12.0
 + npm deps updated
 + build.sh added
