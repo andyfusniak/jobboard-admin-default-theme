@@ -23,6 +23,10 @@
     <span class="truncate">Themes</span>
   </a>
 
+  <a href="/system/environment" class="system-nav system-nav--{{if eq .Page.URLPath "/system/environment"}}active{{else}}inactive{{end}}">
+    <span class="truncate">Environment</span>
+  </a>
+
   {{if eq .Page.URLPath "/system/config"}}
   <a href="/system/config" class="system-nav system-nav--active">
     <span class="truncate">Config</span>

@@ -1,0 +1,31 @@
+{{- define "title"}}System : Environment{{end}}
+{{- define "system-content"}}
+<h1 class="title">Environment</h1>
+
+[[ tabs for these two sections below]]
+
+<h2>Web</h2>
+{{- with .Data.SysData.Env.Raw}}
+<table>
+{{- range $n, $v := .}}
+<tr>
+  <td>{{$n}}</td>
+  <td>{{$v}}</td>
+</tr>
+{{- end}}
+</table>
+{{- end}}
+
+<h2>Admin</h2>
+{{- with .Data.AdminConfig.Raw}}
+<table>
+{{- range $n, $v := .}}
+<tr>
+  <td>{{$n}}</td>
+  <td>{{$v}}</td>
+</tr>
+{{- end}}
+</table>
+{{- end}}
+
+{{- end}}

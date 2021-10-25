@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.0 (Mon, 25 Oct 21 9.30pm)
++ System environment variables templates for v0.16.0
+
 ## 0.7.0 (Mon, 25 Oct 21 9.25pm)
 + Config page styling
 
