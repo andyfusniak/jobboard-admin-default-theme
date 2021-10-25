@@ -9,32 +9,18 @@
     <table class="min-w-full divide-y divide-gray-200">
       <thead>
         <tr>
-          <th class="table-head">
-            ID
-          </th>
-          <th class="table-head">
-            Email
-          </th>
-          <th class="table-head">
-            First name
-          </th>
-          <th class="table-head">
-            Last name
-          </th>
-          <th class="table-head">
-            Last signed in
-          </th>
-          <th class="table-head">
-            Created
-          </th>
-          <th class="table-head">
-            Last changed
-          </th>
+          <th class="table-head">ID</th>
+          <th class="table-head">Email</th>
+          <th class="table-head">First name</th>
+          <th class="table-head">Last name</th>
+          <th class="table-head">Last signed in</th>
+          <th class="table-head">Created</th>
+          <th class="table-head">Last changed</th>
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
         {{- range .Data.Admins}}
-        <tr class="bg-white hover:bg-gray-50">
+        <tr class="bg-white">
           {{- template "admin-row" .}}
         </tr>
         {{- end}}
