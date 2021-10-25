@@ -1,4 +1,8 @@
 # CHANGELOG
+
+## 0.7.0 (Mon, 25 Oct 21 9.25pm)
++ Config page styling
+
 ## 0.6.0 (Mon, 25 Oct 21 5.03pm)
 + Remove options references from theme as it now uses the environment variable `THEME_TAG`.
 
