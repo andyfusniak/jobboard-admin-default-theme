@@ -1,4 +1,7 @@
 # CHANGELOG
+## 0.6.0 (Mon, 25 Oct 21 5.03pm)
++ Remove options references from theme as it now uses the environment variable `THEME_TAG`.
+
 ## 0.5.0 (Mon, 25 Oct 21 12.18pm)
 + `.Site.DevMode` deprecated and uses `.Site.ThemeTag` to determine production mode
 
