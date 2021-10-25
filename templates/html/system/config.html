@@ -3,212 +3,212 @@
 <h1 class="title">Config</h1>
 
 {{- with .Data.SysData.Env}}
-<div class="max-w-3xl my-10">
+<div class="my-10">
   <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="px-4 py-5 sm:px-6">
+    <div class="px-3 py-5">
       <h3 class="text-lg leading-6 font-medium text-gray-900">
         Jobboard Web Service Configuration
       </h3>
     </div>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
-      <dl class="sm:divide-y sm:divide-gray-200">
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+      <dl class="font-mono sm:divide-y sm:divide-gray-200">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Database URL
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
           {{.DatabaseURL}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Port
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.Port}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             SMTP Host
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SMTPCredentials.Host}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             SMTP Port
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SMTPCredentials.Port}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             SMTP Username
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SMTPCredentials.Username}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             SMTP Password
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SMTPCredentials.Password}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             SMTP From
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SMTPCredentials.From}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             SMTP ReplyTo
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SMTPCredentials.ReplyTo}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Theme Tag
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.ThemeTag}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Theme Path
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.ThemePath}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Site Base URL
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SiteBaseURL}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Redirect Naked Domain Requests
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.RedirectNakedDomainRequests}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Site Currency
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SiteCurrency}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Site Thumbnail Size
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SiteThumbnailSize}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Time Zone Name
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.TZName}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Google Cloud Project
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.GoogleCloudProject}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="lpy-2 g:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Google Tag Manager ID
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.GoogleTagManagerID}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Site map Enabled
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SitemapEnabled}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             System Secret Access Token
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.SystemSecretAccessToken}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Stripe SecretKey
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.Stripe.SecretKey}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 g:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Stripe SigningSecret
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.Stripe.SigningSecret}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Success URL
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.Stripe.SuccessURL}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Cancel URL
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.Stripe.CancelURL}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             StackDriver Enabled
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.StackDriverEnabled}}
           </dd>
         </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
+        <div class="py-2 lg:py-1 sm:px-3 sm:grid lg:grid-cols-5">
+          <dt class="text-sm font-medium text-gray-900 lg:col-span-2 xl:col-span-1">
             Log Level
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-500 sm:mt-0 lg:col-span-3 xl:col-span-4">
             {{.LogLevel}}
           </dd>
         </div>
