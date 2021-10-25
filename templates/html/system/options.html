@@ -7,20 +7,14 @@
   <table class="min-w-full divide-y divide-gray-200">
     <thead>
       <tr>
-        <th class="table-head">
-          Name
-        </th>
-        <th class="table-head">
-          Value
-        </th>
-        <th class="table-head">
-          Action
-        </th>
+        <th class="table-head">Name</th>
+        <th class="table-head">Value</th>
+        <th class="table-head">Action</th>
       </tr>
     </thead>
     <tbody class="bg-white divide-y divide-gray-200">
       {{- range .Data.Options}}
-      <tr>
+      <tr class="font-mono">
         <td class="px-6 py-4 whitespace-nowrap">
           <span class="td-text">{{.Name}}</span>
         </td>
