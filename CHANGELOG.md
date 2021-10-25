@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.9.0 (Mon, 25 Oct 21 10.59pm)
++ Environment page styling
++ Tidy up html
++ Consistent colours
+
 ## 0.8.0 (Mon, 25 Oct 21 9.30pm)
 + System environment variables templates for v0.16.0
 
