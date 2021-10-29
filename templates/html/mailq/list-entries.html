@@ -9,34 +9,46 @@
     <table class="min-w-full divide-y divide-gray-200">
       <thead>
         <tr>
-          <th class="table-head">ID</th>
-          <th class="table-head">Status</th>
           <th class="table-head">Email To</th>
-          <th class="table-head">Subject</th>
           <th class="table-head">Created date</th>
+          <th class="table-head">Status</th>
+          <th class="table-head">Priority</th>
+          <th class="table-head">Attempts</th>
+          <th class="table-head">Max attempts</th>
+          <th class="table-head">Subject</th>
           <th class="table-head">Sent date</th>
+          <th class="table-head">Retry after</th>
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
         {{- range .Data.Entries}}
         <tr class="bg-white hover:bg-gray-50">
           <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{.ID}}</a>
-          </td>
-          <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{.Status}}</a>
-          </td>
-          <td class="whitespace-nowrap">
             <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{.EmailTo}}</a>
-          </td>
-          <td class="whitespace-nowrap">
-            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{.Subject}}</a>
           </td>
           <td class="whitespace-nowrap">
             <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .CreatedAt}}</a>
           </td>
           <td class="whitespace-nowrap">
+            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{.Status}}</a>
+          </td>
+          <td class="whitespace-nowrap">
+            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{if eq .Priority 1}}HIGH{{else}}LOW{{end}}</a>
+          </td>
+          <td class="whitespace-nowrap">
+            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{.Attempts}}</a>
+          </td>
+          <td class="whitespace-nowrap">
+            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{.MaxAttempts}}</a>
+          </td>
+          <td class="whitespace-nowrap">
+            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{.Subject}}</a>
+          </td>
+          <td class="whitespace-nowrap">
             <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{sentAt .SentAt}}</a>
+          </td>
+          <td class="whitespace-nowrap">
+            <a href="/mailq/{{.ID}}" class="block px-6 py-4 td-text">{{sentAt .RetryAfter}}</a>
           </td>
         </tr>
         {{- end}}
