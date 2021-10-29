@@ -1,4 +1,6 @@
 # CHANGELOG
+## 0.10 (Fri, 29 Oct 21 10.05pm)
++ Fix tailwind.css link for auth/signin.html using `THEME_TAG` version
 
 ## 0.9.0 (Mon, 25 Oct 21 10.59pm)
 + Environment page styling

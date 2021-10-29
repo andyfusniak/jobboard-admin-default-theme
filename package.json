@@ -1,6 +1,6 @@
 {
   "name": "jobboard-admin-default-theme",
-  "version": "0.9.0",
+  "version": "0.10",
   "description": "Jobboard admin control panel",
   "scripts": {
     "clean": "rimraf public",

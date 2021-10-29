@@ -5,7 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin sign in</title>
+  {{- if .Site.ThemeTag}}
+  <link rel="stylesheet" href="/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/css/tailwind.css">
+  {{- else}}
   <link rel="stylesheet" href="/static/css/tailwind.css">
+  {{- end}}
 </head>
 <body>
   <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
