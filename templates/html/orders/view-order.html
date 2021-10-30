@@ -19,7 +19,7 @@
       </li>
     </ol>
   </nav>
-  <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Order Details</h1>
+  <h1 class="mt-10 title">Order Details</h1>
 
 <!-- Order details card -->
   {{- with .Data.Order}}
@@ -30,7 +30,7 @@
           <dt class="text-sm font-medium text-gray-500">
             ID
           </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-mono">
             {{.ID}}
           </dd>
         </div>
@@ -38,8 +38,10 @@
           <dt class="text-sm font-medium text-gray-500">
             Job ID
           </dt>
-          <dd class="mt-1 text-sm text-indigo-700 hover:text-indigo-500 hover:underline sm:mt-0 sm:col-span-2">
-            <a href="/jobs/{{.JobID}}">{{.JobID}}</a>
+          <dd class="mt-1 text-sm sm:mt-0 sm:col-span-2">
+            <a href="/jobs/{{.JobID}}">
+              <span class="px-1 py-1 text-id--clickable">{{.JobID}}</span>
+            </a>
           </dd>
         </div>
         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -63,9 +65,18 @@
             Status
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{.Status}}
-            {{ if eq .Status "pending" -}}
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+            {{if eq .Status "pending" -}}
+            <span class="status-badge status-badge--pending">
+              {{.Status}}
+            </span>
+            {{- end}}
+            {{if eq .Status "fulfilled" -}}
+             <span class="status-badge status-badge--active">
+              {{.Status}}
+            </span>
+            {{- end}}
+            {{if eq .Status "subscribed" -}}
+             <span class="status-badge status-badge--subscribed">
               {{.Status}}
             </span>
             {{- end}}
@@ -84,9 +95,9 @@
             Pinned
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{- if .Pinned -}}
+            {{- if .Pinned}}
             <span class="material-icons-outlined text-green-700">push_pin</span>
-            {{else}}
+            {{- else}}
             <span class="material-icons-outlined text-gray-200">push_pin</span>
             {{- end}}
           </dd>
@@ -96,7 +107,7 @@
             Highlight Type
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{if .HLType}}
+            {{- if .HLType}}
             <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>

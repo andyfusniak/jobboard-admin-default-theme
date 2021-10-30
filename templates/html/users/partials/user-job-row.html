@@ -1,8 +1,8 @@
 {{- define "user-job-row"}}
 {{- with .Job}}
 <td class="whitespace-nowrap">
-  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text font-mono">
-    <span class="px-1 py-1 bg-gray-50 border border-gray-200 rounded-md">{{.ID}}</span>
+  <a href="/jobs/{{.ID}}" class="block px-6 py-4 td-text">
+    <span class="px-1 py-1 text-id--clickable">{{.ID}}</span>
   </a>
 </td>
 <td class="whitespace-nowrap">

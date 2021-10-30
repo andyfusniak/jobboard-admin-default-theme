@@ -60,7 +60,7 @@ class="px-4 sm:px-6 lg:px-8">
             </dt>
             <dd class="mt-1 text-sm sm:mt-0 sm:col-span-2">
               <a href="/users/{{.UserID}}">
-                <span class="px-1 py-1 bg-gray-50 border border-gray-200 font-mono rounded-md">{{.UserID}}</span>
+                <span class="px-1 py-1 text-id--clickable">{{.UserID}}</span>
               </a>
             </dd>
           </div>
@@ -291,8 +291,8 @@ class="px-4 sm:px-6 lg:px-8">
         <tbody class="bg-white divide-y divide-gray-200">
           <tr class="bg-white hover:bg-gray-50">
             <td class="whitespace-nowrap">
-              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text font-mono">
-                <span class="px-1 py-1 bg-gray-50 border border-gray-200 rounded-md">{{.ID}}</span>
+              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">
+                <span class="px-1 py-1 text-id--clickable">{{.ID}}</span>
               </a>
             </td>
             <td class="whitespace-nowrap">
@@ -304,10 +304,18 @@ class="px-4 sm:px-6 lg:px-8">
             <td class="whitespace-nowrap">
               {{if eq .Status "pending"}}
               <a href="/orders/{{.ID}}" class="px-6 py-4">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">{{.Status}}</span>
+                <span class="status-badge status-badge--pending">{{.Status}}</span>
               </a>
-              {{- else}}
-              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{.Status}}</a>
+              {{- end}}
+              {{if eq .Status "fulfilled"}}
+              <a href="/orders/{{.ID}}" class="px-6 py-4">
+                <span class="status-badge status-badge--active">{{.Status}}</span>
+              </a>
+              {{- end}}
+              {{if eq .Status "subscribed"}}
+              <a href="/orders/{{.ID}}" class="px-6 py-4">
+                <span class="status-badge status-badge--subscribed">{{.Status}}</span>
+              </a>
               {{- end}}
             </td>
             <td class="whitespace-nowrap">
