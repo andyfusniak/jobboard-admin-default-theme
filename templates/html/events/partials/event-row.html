@@ -1,20 +1,31 @@
 {{- define "event-row"}}
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="td-text">{{.ID}}</span>
+<td class="whitespace-nowrap">
+  <a href="/events/{{.ID}}" class="block px-6 py-4 td-text">
+    <span class="px-1 py-1 text-id--clickable">{{.ID}}</span>
+  </a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="td-text">{{.UserID}}</span>
+<td class="whitespace-nowrap">
+  <a href="/events/{{.ID}}" class="block px-6 py-4 td-text font-mono">{{.UserID}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="td-text">{{.Name}}</span>
+<td class="whitespace-nowrap">
+  <a href="/events/{{.ID}}" class="block px-6 py-4 td-text">{{.Name}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="td-text">{{.Message}}</span>
+<td class="whitespace-nowrap max-w-sm">
+  <a href="/events/{{.ID}}" class="block px-6 py-4 td-text overflow-hidden truncate">{{.Message}}</a>
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="td-text">{{.Source}}</span>
+<td class="whitespace-nowrap">
+  {{- if eq .Source "system"}}
+  <a href="/events/{{.ID}}" class="block px-6 py-4 td-text">
+    <span class="status-badge status-badge--other">{{.Source}}</span>
+  </a>
+  {{- end}}
+  {{- if eq .Source "user"}}
+  <a href="/events/{{.ID}}" class="block px-6 py-4 td-text">
+    <span class="status-badge status-badge--active">{{.Source}}</span>
+  </a>
+  {{- end }}
 </td>
-<td class="px-6 py-4 whitespace-nowrap">
-  <span class="td-text">{{ admintime .CreatedAt}}</span>
+<td class="whitespace-nowrap">
+  <a href="/events/{{.ID}}" class="block px-6 py-4 td-text">{{ admintime .CreatedAt}}</a>
 </td>
 {{- end}}

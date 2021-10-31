@@ -1,6 +1,6 @@
 {{- define "token-row"}}
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="td-text">{{.Token}}</span>
+  <span class="td-text font-mono">{{.Token}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
   <span class="td-text">{{.Email}}</span>
@@ -9,7 +9,15 @@
   <span class="td-text">{{.Role}}</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
-  <span class="td-text">{{.Status}}</span>
+  {{if eq .Status "verified"}}
+  <span class="status-badge status-badge--active">
+    {{.Status}}
+  </span>
+  {{- else}}
+  <span class="status-badge status-badge--other">
+    {{.Status}}
+  </span>
+  {{- end}}
 </td>
 <td class="px-6 py-4 whitespace-nowrap">
   <span class="td-text">{{admintime .CreatedAt}}</span>

@@ -4,43 +4,25 @@
   <h1 class="mt-10 title">Tokens</h1>
 </div>
 
-<div class="px-4">
+<div class="px-4 sm:px-6 lg:px-8">
   <div class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
     <table class="min-w-full divide-y divide-gray-200">
       <thead>
         <tr>
-         <th class="table-head">
-            ID
-          </th>
-          <th class="table-head">
-            User ID
-          </th>
-           <th class="table-head">
-            Kind
-          </th>
-          <th class="table-head">
-            Email
-          </th>
-          <th class="table-head">
-            Role
-          </th>
-          <th class="table-head">
-            Status
-          </th>
-          <th class="table-head">
-            Token
-          </th>
-          <th class="table-head">
-            Created
-          </th>
-          <th class="table-head">
-            modified
-          </th>
+          <th class="table-head">ID</th>
+          <th class="table-head">User ID</th>
+          <th class="table-head">Kind</th>
+          <th class="table-head">Email</th>
+          <th class="table-head">Role</th>
+          <th class="table-head">Status</th>
+          <th class="table-head">Token</th>
+          <th class="table-head">Created</th>
+          <th class="table-head">modified</th>
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
         {{- range .Data.Tokens}}
-        <tr class="bg-white hover:bg-gray-50">
+        <tr class="bg-white">
           {{- template "token-row" .}}
         </tr>
         {{- end}}

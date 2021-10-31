@@ -20,12 +20,19 @@
     </ol>
   </nav>
 </div>
+
+<div class="mt-14 px-4 sm:px-6 lg:px-8">
+  {{- with .Data.Job}}
+  <p class="text-lg text-gray-600">Job ID: <span class="font-mono">{{.ID}}</span></p>
+  {{end}}
+</div>
+
 <div x-data="{
   openTab: 1,
   activeClasses: 'border-blue-500 text-blue-600',
   inactiveClasses: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
 }"
-class="px-4">
+class="px-4 sm:px-6 lg:px-8">
   <!-- Tabs -->
   <div class="mt-14">
     <div class="border-b border-gray-200">
@@ -42,26 +49,19 @@ class="px-4">
   </div>
 
   <!-- Details -->
-  <div x-show="openTab === 1" class="max-w-5xl px-4 sm:px-6 lg:px-8">
-    <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Job Details</h1>
+  <div x-show="openTab === 1" class="max-w-5xl">
     {{- with .Data.Job}}
     <div class="my-10 bg-white shadow overflow-hidden sm:rounded-lg">
       <div class="border-t border-gray-200 px-4 py-4 sm:p-0">
         <dl class="sm:divide-y sm:divide-gray-200">
           <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">
-              ID
-            </dt>
-            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-             {{.ID}}
-            </dd>
-          </div>
-          <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500">
               User ID
             </dt>
-            <dd class="mt-1 text-sm text-blue-700 hover:text-blue-500 hover:underline sm:mt-0 sm:col-span-2">
-              <a href="/users/{{.UserID}}">{{.UserID}}</a>
+            <dd class="mt-1 text-sm sm:mt-0 sm:col-span-2">
+              <a href="/users/{{.UserID}}">
+                <span class="px-1 py-1 text-id--clickable">{{.UserID}}</span>
+              </a>
             </dd>
           </div>
           <div class="py-3 sm:py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -256,100 +256,90 @@ class="px-4">
   </div>
 
   <!-- Order -->
-  <div x-show="openTab === 2" class="">
-    <div class="px-4 sm:px-6 lg:px-8">
-      <h1 class="mt-10 text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Orders</h1>
-    </div>
+  <div x-show="openTab === 2">
     {{- range $.Data.Orders}}
-    <div class="px-4">
-      <div class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead>
-            <tr>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                ID
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                Jobd ID
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                Start At
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                End At
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                Status
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                Kind
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                Features
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                Created
-              </th>
-              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
-                Modified
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <tr class="bg-white hover:bg-gray-50">
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">{{.ID}}</a>
-              </td>
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">{{.JobID}}</a>
-              </td>
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">{{admintime .StartAt}}</a>
-              </td>
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">{{admintime .EndAt}}</a>
-              </td>
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">{{.Status}}</a>
-              </td>
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">{{.Kind}}</a>
-              </td>
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">
-                  <div class="flex items-center">
-                    {{- if .Pinned}}
-                    <span class="material-icons-outlined text-green-700 text-xl">push_pin</span>
-                    {{else -}}
-                    <span class="material-icons-outlined text-gray-200 text-xl">push_pin</span>
-                    {{- end}}
-                    {{/* {{- if eq .HLType "custom" }}
-                    <span class="inline-block px-2 py-2" style="background-color: {{.HLCol}}"></span>
-                    {{- end}}
-                    {{- if eq .HLType "standard" }}
-                    <span class="inline-block bg-yellow-100 px-2 py-2"></span>
-                    {{- end}}
-                    {{- if eq .HLType nil }}
-                    <span class="inline-block border border-gray-500 px-2 py-2"></span>
-                    {{- end}} */}}
-                    {{- if .LogoURL}}
-                    <span class="material-icons-outlined text-green-700 text-xl">image</span>
-                    {{else -}}
-                    <span class="material-icons-outlined text-gray-200 text-xl">image</span>
-                    {{- end}}
-                  </div>
-                </a>
-              </td>
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">{{admintime .CreatedAt}}</a>
-              </td>
-              <td class="whitespace-nowrap">
-                <a href="/orders/{{.ID}}" class="clickable-row">{{admintime .ModifiedAt}}</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead>
+          <tr>
+            <th class="table-head">ID</th>
+            <th class="table-head">Start At</th>
+            <th class="table-head">End At</th>
+            <th class="table-head">Status</th>
+            <th class="table-head">Kind</th>
+            <th class="table-head">Features</th>
+            <th class="table-head">Created</th>
+            <th class="table-head">Modified</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr class="bg-white hover:bg-gray-50">
+            <td class="whitespace-nowrap">
+              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">
+                <span class="px-1 py-1 text-id--clickable">{{.ID}}</span>
+              </a>
+            </td>
+            <td class="whitespace-nowrap">
+              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .StartAt}}</a>
+            </td>
+            <td class="whitespace-nowrap">
+              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .EndAt}}</a>
+            </td>
+            <td class="whitespace-nowrap">
+              {{if eq .Status "pending"}}
+              <a href="/orders/{{.ID}}" class="px-6 py-4">
+                <span class="status-badge status-badge--pending">{{.Status}}</span>
+              </a>
+              {{- end}}
+              {{if eq .Status "fulfilled"}}
+              <a href="/orders/{{.ID}}" class="px-6 py-4">
+                <span class="status-badge status-badge--active">{{.Status}}</span>
+              </a>
+              {{- end}}
+              {{if eq .Status "subscribed"}}
+              <a href="/orders/{{.ID}}" class="px-6 py-4">
+                <span class="status-badge status-badge--subscribed">{{.Status}}</span>
+              </a>
+              {{- end}}
+            </td>
+            <td class="whitespace-nowrap">
+              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{.Kind}}</a>
+            </td>
+            <td class="whitespace-nowrap">
+              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">
+                <div class="flex items-center">
+                  {{- if .Pinned}}
+                  <span class="material-icons-outlined text-green-700 text-xl">push_pin</span>
+                  {{else -}}
+                  <span class="material-icons-outlined text-gray-200 text-xl">push_pin</span>
+                  {{- end}}
+
+                  {{- if eq (derefstr .HLType) "custom"}}
+                  <span class="inline-block px-2 py-2" style="background-color: {{.HLCol}}"></span>
+                  {{- end}}
+                  {{- if eq (derefstr .HLType) "standard" }}
+                  <span class="inline-block bg-yellow-100 px-2 py-2"></span>
+                  {{- end}}
+                  {{- if eq (derefstr .HLType) "" }}
+                  <span class="inline-block border border-gray-500 px-2 py-2"></span>
+                  {{- end}}
+                  {{- if .LogoURL}}
+                  <span class="material-icons-outlined text-green-700">image</span>
+                  {{else -}}
+                  <span class="material-icons-outlined text-gray-200">image</span>
+                  {{- end}}
+                </div>
+              </a>
+            </td>
+            <td class="whitespace-nowrap">
+              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .CreatedAt}}</a>
+            </td>
+            <td class="whitespace-nowrap">
+              <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .ModifiedAt}}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     {{- end}}
   </div>

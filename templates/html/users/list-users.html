@@ -33,7 +33,7 @@
     window.location.href = location.origin + location.pathname + '?' + this.params.toString();
   }
 }"
-  class="px-4">
+  class="px-4 sm:px-6 lg:px-8">
 
   <button @click="limit(10)">LIMIT 10</button>
   <button @click="limit(30)">LIMIT 30</button>
@@ -59,7 +59,7 @@
       <table class="min-w-full divide-y divide-gray-200">
         <thead>
           <tr>
-            <th class="gap-1 px-6 py-3 bg-gray-50 text-left text-xs text-gray-500">
+            <th class="table-head">
               <button @click="toggle('email')" type="button" class="flex items-center gap-1 cursor-pointer">
                 <span class="font-medium uppercase">Email</span>
                 <template x-if="location.pathname && params == '' ">
@@ -69,7 +69,7 @@
                 <span x-show="params.get('order_direction') === 'asc'" class="material-icons-outlined text-sm">arrow_upward</span>
               </button>
             </th>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs text-gray-500">
+            <th class="table-head">
               <button @click="toggle('role')" type="button" class="flex items-center gap-1 cursor-pointer">
                 <span class="font-medium uppercase">Role</span>
                 <template x-if="location.pathname && params == '' ">
@@ -79,10 +79,10 @@
                 <span x-show="params.get('order_direction') === 'asc'" class="material-icons-outlined text-sm">arrow_upward</span>
               </button>
             </th>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase">
+            <th class="table-head">
               Meta data
             </th>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs text-gray-500">
+            <th class="table-head">
               <button @click="toggle('created_at')" type="button" class="flex items-center gap-1 cursor-pointer">
                 <span class="font-medium uppercase">Created</span>
                 <template x-if="location.pathname && params == '' ">
@@ -92,7 +92,7 @@
                 <span x-show="params.get('order_direction') === 'asc'" class="material-icons-outlined text-sm">arrow_upward</span>
               </button>
             </th>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs text-gray-500">
+            <th class="table-head">
               <button @click="toggle('modified_at')" type="button" class="flex items-center gap-1 cursor-pointer">
                 <span class="font-medium uppercase">Modified</span>
                 <template x-if="location.pathname && params == '' ">
@@ -161,7 +161,7 @@
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
           {{- range .Data.Tokens}}
-          <tr class="bg-white hover:bg-gray-50">
+          <tr class="bg-white">
             {{- template "token-row" .}}
           </tr>
           {{- end}}

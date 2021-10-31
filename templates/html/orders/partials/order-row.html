@@ -1,6 +1,8 @@
 {{- define "order-row"}}
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{.ID}}</a>
+  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">
+    <span class="px-1 py-1 text-id--clickable">{{.ID}}</span>
+  </a>
 </td>
 <td class="whitespace-nowrap">
   <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .StartAt}}</a>
@@ -9,7 +11,21 @@
   <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{admintime .EndAt}}</a>
 </td>
 <td class="whitespace-nowrap">
-  <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{.Status}}</a>
+ {{if eq .Status "pending"}}
+  <a href="/orders/{{.ID}}" class="px-6 py-4">
+    <span class="status-badge status-badge--pending">{{.Status}}</span>
+  </a>
+  {{- end}}
+  {{if eq .Status "fulfilled"}}
+  <a href="/orders/{{.ID}}" class="px-6 py-4">
+    <span class="status-badge status-badge--active">{{.Status}}</span>
+  </a>
+  {{- end}}
+  {{if eq .Status "subscribed"}}
+  <a href="/orders/{{.ID}}" class="px-6 py-4">
+    <span class="status-badge status-badge--subscribed">{{.Status}}</span>
+  </a>
+  {{- end}}
 </td>
 <td class="whitespace-nowrap">
   <a href="/orders/{{.ID}}" class="block px-6 py-4 td-text">{{.Kind}}</a>

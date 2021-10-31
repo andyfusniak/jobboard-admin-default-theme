@@ -1,38 +1,90 @@
 {{- define "title"}}View Job{{end}}
 {{- define "content"}}
-<h1>Event</h1>
+<div class="max-w-5xl px-4 sm:px-6 lg:px-8">
+  <!-- Breadcrumb -->
+  <nav class="flex lg:hidden mt-4">
+    <ol role="list" class="flex space-x-4">
+      <li>
+        <div>
+          <a href="/" class="text-gray-400 hover:text-gray-500">
+            <span class="material-icons-outlined h-5 w-5">home</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <span class="material-icons-outlined">chevron_right</span>
+          <a href="/events" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Events</a>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <h1 class="mt-10 title">Event Details</h1>
 
-{{- with .Data.Event}}
-<table>
-  <tr>
-    <td>ID</td>
-    <td>{{.ID}}</td>
-  </tr>
-  <tr>
-    <td>UserID</td>
-    <td>{{.UserID}}</td>
-  </tr>
-  <tr>
-    <td>Source</td>
-    <td>{{.Source}}</td>
-  </tr>
-  <tr>
-    <td>Name</td>
-    <td>{{.Name}}</td>
-  </tr>
-  <tr>
-    <td>Message</td>
-    <td>{{.Message}}</td>
-  </tr>
-  <tr>
-    <td>Event Data</td>
-    <td>{{ maptojsonstr .Data}}</td>
-  </tr>
-  <tr>
-    <td>Date</td>
-    <td>{{ admintime .CreatedAt}}</td>
-  </tr>
-</table>
-{{- end}}
-
+  <!-- Event details card -->
+  {{- with .Data.Event}}
+  <div class="mt-16 bg-white shadow sm:rounded-lg">
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            ID
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-mono">
+            {{.ID}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            User ID
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.UserID}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Source
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Source}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Name
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Name}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Message
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{.Message}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Event Data
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{ .Data}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Date
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{ admintime .CreatedAt}}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  {{- end}}
+</div>
 {{- end}}
