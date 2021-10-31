@@ -1,51 +1,112 @@
 {{- define "title"}}System : View Theme Details{{end}}
 {{- define "system-content"}}
-<h2>Template details</h2>
-{{- with .Data.Theme}}
-<table>
-  <tr>
-    <td>ID</td>
-    <td>{{.ID}}</td>
-  </tr>
-  <tr>
-    <td>Name</td>
-    <td>{{.Name}}</td>
-  </tr>
-  <tr>
-    <td>Version</td>
-    <td>{{.Version}}</td>
-  </tr>
-  <tr>
-    <td>Description</td>
-    <td>{{.Description}}</td>
-  </tr>
-  <tr>
-    <td>Checksum</td>
-    <td>{{slice .DigestSHA256 0 8}}</td>
-  </tr>
-  <tr>
-    <td>Created at</td>
-    <td>{{admintime .CreatedAt}}</td>
-  </tr>
-</table>
-{{- end }}
 
-<h2>Files</h2>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Checksum</th>
-    <th>Content Type</th>
-  </tr>
+<div class="max-w-4xl">
+  <!-- Breadcrumb -->
+  <nav class="flex">
+    <ol role="list" class="flex space-x-4">
+      <li>
+        <div>
+          <a href="/" class="text-gray-400 hover:text-gray-500">
+            <span class="material-icons-outlined h-5 w-5">home</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <span class="material-icons-outlined">chevron_right</span>
+          <a href="/system/themes/overview" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Themes</a>
+        </div>
+      </li>
+    </ol>
+  </nav>
 
-{{- range .Data.Files}}
-  <tr>
-    <td>{{.Path}}</td>
-    <td>{{slice .DigestSHA256 0 8}}</td>
-    <td>{{.ContentType}}</td>
-  </tr>
+  <h1 class="mt-4 title">Theme template details</h1>
+
+  {{- with .Data.Theme}}
+  <div class="mt-10 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+      <dl class="sm:divide-y sm:divide-gray-200">
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            ID
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-mono">
+            {{.ID}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Name
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-mono">
+            {{.Name}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Version
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-mono">
+            <span class="status-badge status-badge--active">{{.Version}}</span>
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Description
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-mono">
+            {{.Description}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Checksum
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-mono">
+            {{slice .DigestSHA256 0 8}}
+          </dd>
+        </div>
+        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Created at
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 font-mono">
+            {{admintime .CreatedAt}}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  {{- end }}
+
+  <h2 class="mt-8 text-2xl text-gray-700">Files</h2>
+
+  <div class="my-4 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th class="table-head">Name</th>
+          <th class="table-head">Checksum</th>
+          <th class="table-head">Content Type</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {{- range .Data.Files}}
+        <tr class="font-mono">
+          <td class="px-6 py-2 whitespace-nowrap">
+            <span class="td-text">{{.Path}}</span>
+          </td>
+          <td class="px-6 py-2 whitespace-nowrap">
+            <span class="td-text">{{slice .DigestSHA256 0 8}}</span>
+          </td>
+          <td class="px-6 py-2 whitespace-nowrap">
+            <span class="td-text">{{.ContentType}}</span>
+          </td>
+        </tr>
+        {{- end}}
+      </tbody>
+    </table>
+  </div>
+</div>
 {{- end}}
-</table>
-
-{{- end}}
-

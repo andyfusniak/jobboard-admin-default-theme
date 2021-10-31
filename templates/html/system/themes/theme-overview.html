@@ -1,25 +1,37 @@
 {{- define "title"}}System : Themes Overview{{end}}
 {{- define "system-content"}}
-<h1 class="text-2xl md:text-4xl font-bold tracking-tight text-gray-600">Themes</h1>
 
-<table>
-<tr>
-  <th>ID</td>
-  <th>Tag</th>
-  <th>Description</th>
-</tr>
-{{- range .Data.Themes}}
-<tr>
-  <td>
-    <a href="/system/themes/view/{{.ID}}">{{.ID}}</a>
-  </td>
-  <td>{{.Name}}:{{.Version}}</td>
-  <td>{{.Description}}</td>
-</tr>
-{{- end}}
-</table>
+<div class="max-w-3xl">
+  <h1 class="title">Themes</h1>
+  <div class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th class="table-head">Tag</th>
+          <th class="table-head">Description</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {{- range .Data.Themes}}
+        <tr class="bg-white hover:bg-gray-50">
+          <td class="whitespace-nowrap">
+            <a href="/system/themes/view/{{.ID}}" class="block px-6 py-4 td-text">
+              <span class="px-1 py-1 text-id--clickable">{{.Name}}:{{.Version}}</span>
+            </a>
+          </td>
+          <td class="whitespace-nowrap">
+            <a href="/system/themes/view/{{.ID}}" class="block px-6 py-4 td-text font-mono">{{.Description}}</a>
+          </td>
+        </tr>
+        {{- end}}
+      </tbody>
+    </table>
+  </div>
 
-<br>
-<p><a href="/system/themes/upload">Upload a new theme</a></p>
+  <div class="flex justify-end">
+    <a href="/system/themes/upload" class="btn btn-primary">Upload a new theme</a>
+  </div>
+</div>
+
 
 {{- end}}
