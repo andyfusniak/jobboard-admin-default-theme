@@ -1,4 +1,12 @@
 # CHANGELOG
+
+## 0.12 (Sun, 31 Oct 21)
++ Tidy users table
++ Tidy jobs table
++ Consistency tables, ID text mono font
++ Theme overview, theme upload and theme view styling
++ Extract button styling
+
 ## 0.10 (Fri, 29 Oct 21 10.05pm)
 + Fix tailwind.css link for auth/signin.html using `THEME_TAG` version
 
