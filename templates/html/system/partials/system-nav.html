@@ -9,15 +9,6 @@
     <span class="truncate">Overview</span>
   </a>
   {{- end}}
-  {{if eq .Page.URLPath "/system/options"}}
-  <a href="/system/options" class="system-nav system-nav--active">
-    <span class="truncate">Options</span>
-  </a>
-  {{- else}}
-  <a href="/system/options" class="system-nav system-nav--inactive">
-    <span class="truncate">Options</span>
-  </a>
-  {{- end}}
 
   <a href="/system/themes/overview" class="system-nav system-nav--{{if eq .Page.URLPath "/system/themes/overview"}}active{{else}}inactive{{end}}">
     <span class="truncate">Themes</span>

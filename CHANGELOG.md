@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.13 (Tue, 2 Nov 21)
++ Removed options page
+
 ## 0.12 (Sun, 31 Oct 21)
 + Tidy users table
 + Tidy jobs table
