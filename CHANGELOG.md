@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.14 (Wed, 3 Nov 21)
++ Removed admin and pricing page
++ Removed title of each page
+
 ## 0.13 (Tue, 2 Nov 21)
 + Removed options page
 
