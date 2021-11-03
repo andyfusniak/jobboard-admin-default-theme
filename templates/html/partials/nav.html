@@ -66,15 +66,6 @@
             Orders
           </a>
           {{- end}}
-          {{- if eq .Page.URLPath "/pricing"}}
-          <a href="/pricing" class="nav nav--active">
-            Pricing
-          </a>
-          {{- else}}
-          <a href="/pricing" class="nav nav--inactive">
-            Pricing
-          </a>
-          {{- end}}
           {{- if eq .Page.URLPath "/sources"}}
           <a href="/sources" class="nav nav--active">
             Sources
@@ -82,15 +73,6 @@
           {{- else}}
           <a href="/sources" class="nav nav--inactive">
             Sources
-          </a>
-          {{- end}}
-          {{- if eq .Page.URLPath "/admins"}}
-          <a href="/admins" class="nav nav--active">
-            Admins
-          </a>
-          {{- else}}
-          <a href="/admins" class="nav nav--inactive">
-            Admins
           </a>
           {{- end}}
           {{- if eq .Page.URLPath "/tokens"}}
@@ -186,11 +168,7 @@
 
             <a href="/orders" class="block rounded-md px-3 py-2 text-base text-gray-600 font-medium">Orders</a>
 
-            <a href="/pricing" class="block rounded-md px-3 py-2 text-base text-gray-600 font-medium">Pricing</a>
-
             <a href="/sources" class="block rounded-md px-3 py-2 text-base text-gray-600 font-medium">Sources</a>
-
-            <a href="/admins" class="block rounded-md px-3 py-2 text-base text-gray-600 font-medium">Admins</a>
 
             <a href="/tokens" class="block rounded-md px-3 py-2 text-base text-gray-600 font-medium">Tokens</a>
 
