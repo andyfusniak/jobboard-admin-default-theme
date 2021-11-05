@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.15 (Fri, 5 Nov 2021)
++ Removed sources
++ Build.sh include png
+
 ## 0.14 (Wed, 3 Nov 21)
 + Removed admin and pricing page
 + Removed title of each page
