@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.16 (Mon, 9 Nov 2021)
++ `.Hightlight` in place of `.HLType` and `.HLCol`
++ Update npm dependencies
+
 ## 0.15 (Fri, 5 Nov 2021)
 + Removed sources
 + Build.sh include png
