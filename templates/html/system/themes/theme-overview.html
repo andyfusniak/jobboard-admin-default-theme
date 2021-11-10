@@ -1,9 +1,10 @@
 {{- define "title"}}System : Themes Overview{{end}}
 {{- define "system-content"}}
 
-<div class="max-w-3xl">
-  <h1 class="title">Themes</h1>
-  <div class="my-10 overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+<h1 class="title">Themes</h1>
+
+<div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
+  <div class="overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
     <table class="min-w-full divide-y divide-gray-200">
       <thead>
         <tr>
@@ -27,11 +28,8 @@
       </tbody>
     </table>
   </div>
-
-  <div class="flex justify-end">
+  <div class="mt-2">
     <a href="/system/themes/upload" class="btn btn-primary">Upload a new theme</a>
   </div>
 </div>
-
-
 {{- end}}

@@ -1,6 +1,9 @@
 # CHANGELOG
 
-## 0.16 (Mon, 9 Nov 2021)
+## 0.17 (Wed, 10 Nov 2021)
++ Using `.Highlight` in the template
+
+## 0.16 (Mon, 8 Nov 2021)
 + `.Hightlight` in place of `.HLType` and `.HLCol`
 + Update npm dependencies
 

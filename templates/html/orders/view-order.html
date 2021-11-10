@@ -103,35 +103,16 @@
         </div>
         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">
-            Highlight Type
+            Highlighted
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{- if .HLType}}
-            <svg class="w-6 h-6 stroke-current stroke-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            {{.HLType}}
-            {{else}}
-            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-            {{end}}
-          </dd>
-        </div>
-        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
-            Highlight Colour
-          </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{if .HLCol}}
-            <span class="tracking-tight rounded text-sm text-gray-900"
-              style="background-color: {{.HLCol}};">{{.HLCol}}
-            </span>
-            {{else}}
-            <svg class="w-6 h-6 stroke-current stroke-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-            {{end}}
+            {{- if eq .Highlight "none"}}
+            <span class="inline-block border border-gray-500 px-2 py-2"></span>
+            {{- else if eq .Highlight "standard"}}
+            <span class="inline-block bg-yellow-100 px-2 py-2"></span>
+            {{- else}}
+            <span class="inline-block px-2 py-2" style="background-color: {{.Highlight}}"></span>
+            {{- end}}
           </dd>
         </div>
         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
