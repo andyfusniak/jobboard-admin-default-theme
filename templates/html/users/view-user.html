@@ -46,7 +46,13 @@
             Role
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            {{.Role}}
+            {{- if eq .Role "employer"}}
+            <span class="td-text status-badge bg-pink-100 text-pink-800">{{.Role }}</span>
+            {{- else if eq .Role "talent"}}
+            <span class="td-text status-badge bg-indigo-100 text-indigo-800">{{.Role }}</span>
+            {{- else}}
+            <span class="td-text status-badge status-badge--other">{{.Role }}</span>
+            {{- end}}
           </dd>
         </div>
         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

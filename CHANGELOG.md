@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.18 (Wed, 10 Nov 2021 6.11pm)
++ Differentiate between user role by coloured badge
+
 ## 0.17 (Wed, 10 Nov 2021)
 + Using `.Highlight` in the template
 
