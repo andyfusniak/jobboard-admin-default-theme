@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.20.1 (Fri, 20 Nov 2021)
++ Verticle checkboxes
+
 ## 0.20 (Fri, 20 Nov 2021)
 + Editable job's features
 + checkboxes for searchable, filled, pinned, visible
