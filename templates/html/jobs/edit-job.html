@@ -1,0 +1,27 @@
+{{- define "title"}}Edit Job{{end}}
+{{- define "content"}}
+
+
+{{- with .Data.Job}}
+<form method="post" action="/jobs/{{$.UID}}/edit">
+<input type="hidden" name="userID" value="{{$.UID}}"/>
+<input type="hidden" name="jobID" value="{{.ID}}"/>
+
+<label for="visible">Visible</label>
+<input type="checkbox" name="visible"{{if .Visible}} checked{{end}}/>
+
+<label for="searchable">Searchable</label>
+<input type="checkbox" name="searchable"{{if .Searchable}} checked{{end}}/>
+
+<label for="pinned">Pinned</label>
+<input type="checkbox" name="pinned"{{if .Pinned}} checked{{end}}/>
+
+<label for="filled">Filled</label>
+<input type="checkbox" name="filled"{{if .Filled}} checked{{end}}/>
+
+<button class="btn">Save</button>
+
+</form>
+{{- end}}
+
+{{- end}}
