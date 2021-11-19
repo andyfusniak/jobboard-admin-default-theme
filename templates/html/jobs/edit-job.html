@@ -1,27 +1,59 @@
 {{- define "title"}}Edit Job{{end}}
 {{- define "content"}}
 
-
 {{- with .Data.Job}}
-<form method="post" action="/jobs/{{$.UID}}/edit">
-<input type="hidden" name="userID" value="{{$.UID}}"/>
-<input type="hidden" name="jobID" value="{{.ID}}"/>
+<div class="px-4 sm:px-6 lg:px-8">
+  <!-- Breadcrumb -->
+  <nav class="flex mt-4">
+    <ol role="list" class="flex space-x-4">
+      <li>
+        <div>
+          <a href="/" class="text-gray-400 hover:text-gray-500">
+            <span class="material-icons-outlined h-5 w-5">home</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <span class="material-icons-outlined">chevron_right</span>
+          <a href="/jobs" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Jobs</a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <span class="material-icons-outlined">chevron_right</span>
+          <a href="/jobs/{{.ID}}" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Job View</a>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <form method="post" action="/jobs/{{$.UID}}/edit" class="mt-4 max-w-2xl">
+    <div class="border-2 px-4 py-2">
+      <legend class="my-2 font-medium text-lg text-blue-900">Change features</legend>
+      <input type="hidden" name="userID" value="{{$.UID}}"/>
+      <input type="hidden" name="jobID" value="{{.ID}}"/>
 
-<label for="visible">Visible</label>
-<input type="checkbox" name="visible"{{if .Visible}} checked{{end}}/>
-
-<label for="searchable">Searchable</label>
-<input type="checkbox" name="searchable"{{if .Searchable}} checked{{end}}/>
-
-<label for="pinned">Pinned</label>
-<input type="checkbox" name="pinned"{{if .Pinned}} checked{{end}}/>
-
-<label for="filled">Filled</label>
-<input type="checkbox" name="filled"{{if .Filled}} checked{{end}}/>
-
-<button class="btn">Save</button>
-
-</form>
+      <div class="mt-4 flex gap-4">
+        <div class="flex items-center">
+          <input name="visible" id="visible" type="checkbox"{{if .Visible}} checked{{end}} class="chk-box" />
+          <label for="visible" class="ml-1 block text-base font-normal text-gray-500">Visible</label>
+        </div>
+        <div class="flex items-center">
+          <input name="searchable" id="searchable" type="checkbox"{{if .Searchable}} checked{{end}} class="chk-box" />
+          <label for="searchable" class="ml-1 block text-base font-normal text-gray-500 rounded">Searchable</label>
+        </div>
+        <div class="flex items-center">
+          <input name="pinned" id="pinned" type="checkbox"{{if .Pinned}} checked{{end}} class="chk-box" />
+          <label for="pinned" class="ml-1 block text-base font-normal text-gray-500 rounded">Pinned</label>
+        </div>
+        <div class="flex items-center">
+          <input name="filled" id="filled" type="checkbox"{{if .Filled}} checked{{end}} class="chk-box" />
+          <label for="filled" class="ml-1 block text-base font-normal text-gray-500 rounded">Filled</label>
+        </div>
+      </div>
+      <button class="mt-10 btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
 {{- end}}
-
 {{- end}}

@@ -21,9 +21,10 @@
   </nav>
 </div>
 
-<div class="mt-14 px-4 sm:px-6 lg:px-8">
+<div class="mt-14 px-4 sm:px-6 lg:px-8 flex items-center gap-4">
   {{- with .Data.Job}}
   <p class="text-lg text-gray-600">Job ID: <span class="font-mono">{{.ID}}</span></p>
+  <a href="/jobs/{{.ID}}/edit" class="btn btn-gray">Edit</a>
   {{end}}
 </div>
 
@@ -51,8 +52,6 @@ class="px-4 sm:px-6 lg:px-8">
   <!-- Details -->
   <div x-show="openTab === 1" class="max-w-5xl">
     {{- with .Data.Job}}
-
-    <a href="/jobs/{{.ID}}/edit">[EDIT]</a>
     <div class="my-10 bg-white shadow overflow-hidden sm:rounded-lg">
       <div class="border-t border-gray-200 px-4 py-4 sm:p-0">
         <dl class="sm:divide-y sm:divide-gray-200">

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.20 (Fri, 20 Nov 2021)
++ Editable job's features
++ checkboxes for searchable, filled, pinned, visible
+
 ## 0.18 (Wed, 10 Nov 2021 6.11pm)
 + Differentiate between user role by coloured badge
 
